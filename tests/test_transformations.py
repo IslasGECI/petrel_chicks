@@ -1,4 +1,4 @@
-import dummy_transformations as dt
+import petrel_chicks as dt
 
 
 def test_add_offset():
