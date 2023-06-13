@@ -1,4 +1,4 @@
-from pollos_petrel import (
+from petrel_chicks import (
     calculate_time_days,
     logistic_model,
     inverse_logistic_model,

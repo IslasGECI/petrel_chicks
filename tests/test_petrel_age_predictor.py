@@ -1,5 +1,5 @@
 import hashlib
-from pollos_petrel import (
+from petrel_chicks import (
     Cleaner_Morphometric,
     Fitter,
     Predictions_and_Parameters,
@@ -55,7 +55,7 @@ def test_Fitter(mocker):
         )
 
     mocker.patch(
-        "pollos_petrel.petrel_age_predictor.Cleaner_Morphometric.train_test_split", train_test_split
+        "petrel_chicks.petrel_age_predictor.Cleaner_Morphometric.train_test_split", train_test_split
     )
     Morphometric_Data = Cleaner_Morphometric(petrel_data, features_list, observables_list)
     Fitter_model = Fitter(Morphometric_Data)

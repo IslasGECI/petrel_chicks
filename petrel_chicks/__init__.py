@@ -1,4 +1,4 @@
-"A module to pollos_petrel"
+"A module to petrel_chicks"
 
 __version__ = "0.1.0"
 from .petrel_age_predictor import *  # noqa

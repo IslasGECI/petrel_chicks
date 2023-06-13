@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from pollos_petrel import calculate_mass_diff, filter_post_meal_data, add_unique_id
+from petrel_chicks import calculate_mass_diff, filter_post_meal_data, add_unique_id
 from pandas._testing import assert_frame_equal
 
 d: dict = {
