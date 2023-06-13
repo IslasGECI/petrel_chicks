@@ -1,14 +1,16 @@
 import pandas as pd
 import numpy as np
+from pandas._testing import assert_frame_equal
+
 from petrel_chicks import (
-    calculate_mass_diff,
-    filter_post_meal_data,
     add_unique_id,
+    calculate_effective_mass_loss,
+    calculate_mass_diff,
     calculate_mass_loss_no_feed,
     calculate_mass_loss_after_feed,
     evaluate_mass_loss_no_feed,
+    filter_post_meal_data,
 )
-from pandas._testing import assert_frame_equal
 
 d: dict = {
     "ID_nido": [1.0, 2.0, 3.0, 4.0],
@@ -115,3 +117,7 @@ def test_evaluate_mass_loss_no_feed():
         {"diff_hours": [4, 2], "Masa": [5, 10], "mass_loss_no_feed": [-108, -104]}
     )
     assert_frame_equal(obtained, expected)
+
+
+def test_calculate_effective_mass_loss(df_data, df_model):
+    calculate_effective_mass_loss(df_data, df_model)
