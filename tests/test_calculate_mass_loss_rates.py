@@ -1,6 +1,12 @@
 import pandas as pd
 import numpy as np
-from petrel_chicks import calculate_mass_diff, filter_post_meal_data, add_unique_id
+from petrel_chicks import (
+    calculate_mass_diff,
+    filter_post_meal_data,
+    add_unique_id,
+    calculate_mass_loss_no_feed,
+    calculate_mass_loss_after_feed,
+)
 from pandas._testing import assert_frame_equal
 
 d: dict = {
@@ -86,3 +92,15 @@ def test_add_unique_id():
     }
     data = pd.DataFrame(d)
     add_unique_id(data)
+
+
+def test_calculate_mass_loss_no_feed():
+    df_model = pd.DataFrame({"Alpha": [1, 2], "Beta": [3, 5]})
+    hours = 4
+    chicks_mass = 5
+    expected_mass_loss_no_feed = -108
+    obtained_mass_loss_no_feed = calculate_mass_loss_no_feed(df_model, hours, chicks_mass)
+    assert obtained_mass_loss_no_feed == expected_mass_loss_no_feed
+    expected_mass_loss_after_feed = -64
+    obtained_mass_loss_after_feed = calculate_mass_loss_after_feed(df_model, hours, chicks_mass)
+    assert obtained_mass_loss_after_feed == expected_mass_loss_after_feed
