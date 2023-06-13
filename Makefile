@@ -63,9 +63,12 @@ linter:
 	$(call lint, tests)
 
 mutants: setup
-	mutmut run --paths-to-mutate ${module}
+	mutmut run --paths-to-mutate ${module} --runner 'pytest --mpl'
 
 setup: clean install
+	mkdir --parents tests/baseline
+	mkdir --parents reports/figures
+	pytest --mpl-generate-path tests/baseline/
 
 tests:
 	pytest --verbose

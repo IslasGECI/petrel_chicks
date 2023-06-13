@@ -9,4 +9,5 @@ RUN pip install --upgrade pip && pip install \
     pylint \
     pytest \
     pytest-cov \
+    pytest-mock \
     typer

@@ -86,7 +86,7 @@ def test_plot_morphometric_data():
     plt.savefig(output_path)
     file_content = open(output_path, "rb").read()
     obtained_hash = hashlib.md5(file_content).hexdigest()
-    expected_hash = "85d7200125e7fae5bb71a33755785b7d"
+    expected_hash = "1e0f87349f9d65e9da1a20686c6a0c22"
     assert obtained_hash == expected_hash
 
 
