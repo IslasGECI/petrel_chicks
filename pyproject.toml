@@ -10,5 +10,10 @@ description-file = "README.md"
 home-page = "https://github.com/IslasGECI/petrel_chicks"
 module = "petrel_chicks"
 requires = [
+    "geci_plots @ git+https://github.com/IslasGECI/geci_plots.git@v0.4.0",
+    "lmfit",
+    "mean_differences_mc @ git+https://github.com/IslasGECI/mean_differences_mc.git",
+    "pandasql",
+    "scikit-learn==1.1.3",
 ]
 requires-python=">=3.9"
