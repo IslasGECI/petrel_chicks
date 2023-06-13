@@ -6,6 +6,7 @@ from petrel_chicks import (
     add_unique_id,
     calculate_mass_loss_no_feed,
     calculate_mass_loss_after_feed,
+    evaluate_mass_loss_no_feed,
 )
 from pandas._testing import assert_frame_equal
 
@@ -104,3 +105,10 @@ def test_calculate_mass_loss_no_feed():
     expected_mass_loss_after_feed = -64
     obtained_mass_loss_after_feed = calculate_mass_loss_after_feed(df_model, hours, chicks_mass)
     assert obtained_mass_loss_after_feed == expected_mass_loss_after_feed
+
+def test_evaluate_mass_loss_no_feed():
+    df_data = pd.DataFrame({"diff_hours": [4, 2], "Masa":[5, 10]})
+    df_model = pd.DataFrame({"Alpha": [1, 2], "Beta": [3, 5]})
+    obtained = evaluate_mass_loss_no_feed(df_data, df_model)
+    expected = pd.DataFrame({"diff_hours": [4, 2], "Masa":[5, 10], "mass_loss_no_feed": [-108, -104]})
+    assert_frame_equal(obtained, expected)
