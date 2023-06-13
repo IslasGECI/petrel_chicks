@@ -14,7 +14,8 @@ all: check coverage mutants
 		tests
 
 module = petrel_chicks
-codecov_token = 6c56bccb-1758-4ed9-8161-97c845591c26
+codecov_token = 1595ab76-2b03-4082-914e-5de7cb35e27a
+
 
 define lint
 	pylint \
