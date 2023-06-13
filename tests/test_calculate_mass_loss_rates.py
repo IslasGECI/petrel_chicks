@@ -9,6 +9,7 @@ from petrel_chicks import (
     calculate_mass_loss_no_feed,
     calculate_mass_loss_after_feed,
     evaluate_mass_loss_no_feed,
+    filter_meal_events,
     filter_post_meal_data,
 )
 
@@ -133,3 +134,15 @@ def test_calculate_effective_mass_loss():
         }
     )
     assert_frame_equal(obtained, expected, check_dtype=False)
+
+
+def test_filter_meal_events():
+    df_data = pd.DataFrame({"diff_hours": [4, 2], "Masa": [5, 10], "diff_weights": [-110, -102]})
+    df_model = pd.DataFrame({"Alpha": [1, 2], "Beta": [3, 5]})
+    obtained = filter_meal_events(df_data, df_model)
+    expected = pd.DataFrame(
+        {"diff_hours": [2], "Masa": [10], "diff_weights": [-102], "mass_loss_no_feed": [-104]}
+    )
+    assert_frame_equal(
+        obtained.reset_index(drop=True), expected.reset_index(drop=True), check_dtype=False
+    )
