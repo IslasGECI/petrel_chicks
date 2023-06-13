@@ -119,5 +119,17 @@ def test_evaluate_mass_loss_no_feed():
     assert_frame_equal(obtained, expected)
 
 
-def test_calculate_effective_mass_loss(df_data, df_model):
-    calculate_effective_mass_loss(df_data, df_model)
+def test_calculate_effective_mass_loss():
+    df_data = pd.DataFrame({"diff_hours": [4, 2], "Masa": [5, 10]})
+    df_model = pd.DataFrame({"Alpha": [1, 2], "Beta": [3, 5]})
+    obtained = calculate_effective_mass_loss(df_data, df_model)
+    expected = pd.DataFrame(
+        {
+            "diff_hours": [4, 2],
+            "Masa": [5, 10],
+            "mass_loss_no_feed_half": [-54, -52],
+            "mass_loss_after_feed_half": [-32, -31],
+            "effective_mass_loss": [-86, -83],
+        }
+    )
+    assert_frame_equal(obtained, expected, check_dtype=False)
