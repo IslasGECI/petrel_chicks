@@ -11,4 +11,5 @@ RUN pip install --upgrade pip && pip install \
     pytest \
     pytest-cov \
     pytest-mock \
+    pytest-mpl \
     typer
