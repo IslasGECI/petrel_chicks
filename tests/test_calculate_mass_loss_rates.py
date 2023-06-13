@@ -11,7 +11,7 @@ d: dict = {
 }
 data = pd.DataFrame(d)
 
-d: dict = {
+d_0: dict = {
     "ID_nido": [1.0, 2.0, 3.0, 4.0],
     "Fecha": [4.0, 3.0, 2.0, 1.0],
     "Masa": [4.0, 3.0, 3.5, 3],
@@ -22,7 +22,7 @@ d: dict = {
     "mass_loss_rate": [np.nan, 1, -0.25, 0.5],
 }
 
-expected_mass_loss_data = pd.DataFrame(d)
+expected_mass_loss_data = pd.DataFrame(d_0)
 
 
 def tests_calculate_mass_diff():
@@ -42,7 +42,7 @@ def tests_calculate_mass_diff():
     assert_frame_equal(obtained_df, expected_mass_loss_data)
 
 
-d: dict = {
+d_1: dict = {
     "ID_nido": [1.0, 2.0],
     "Fecha": [4.0, 3.0],
     "Masa": [4.0, 3.0],
@@ -53,7 +53,7 @@ d: dict = {
     "mass_loss_rate": [np.nan, 1],
 }
 
-expected_all_data = pd.DataFrame(d)
+expected_all_data = pd.DataFrame(d_1)
 
 d_2: dict = {
     "ID_nido": [4.0],
@@ -77,7 +77,7 @@ def test_filter_post_meal_data():
 
 
 def test_add_unique_id():
-    d: dict = {
+    d = {
         "Id_nido": [1.0, 2.0, 3.0, 4.0],
         "Fecha": [4.0, 3.0, 2.0, 1.0],
         "Masa": [4.0, 3.0, 3.5, 3],
