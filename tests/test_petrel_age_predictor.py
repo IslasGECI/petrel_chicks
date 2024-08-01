@@ -214,8 +214,18 @@ def test_update_with_age():
 
 
 def test_fill_age_empty():
-    raw_data_modified = pd.DataFrame({"Edad": [4, np.nan, 6, np.nan, np.nan, 9, 10]})
-    expected_data_modified = pd.DataFrame({"Edad": [4, 5, 6, 7, 8, 9, 10]})
+    raw_data_modified = pd.DataFrame(
+        {
+            "Edad": [4, np.nan, 6, np.nan, np.nan, 9, 10],
+            "ID_unico": ["uno", "uno", "uno", "uno", "uno", "uno", "uno"],
+        }
+    )
+    expected_data_modified = pd.DataFrame(
+        {
+            "Edad": [4, 5, 6, 7, 8, 9, 10],
+            "ID_unico": ["uno", "uno", "uno", "uno", "uno", "uno", "uno"],
+        }
+    )
     obtained_data_modified = fill_empty_age(raw_data_modified)
     assert_frame_equal(obtained_data_modified, expected_data_modified)
 
@@ -225,7 +235,12 @@ def test_fill_age_empty():
             "ID_unico": ["uno", "uno", "uno", "uno", "dos", "dos", "dos"],
         }
     )
-    expected_data_modified = pd.DataFrame({"Edad": [4, 5, 6, 7, 8, 9, 10]})
+    expected_data_modified = pd.DataFrame(
+        {
+            "Edad": [4, 5, 6, 7, 8, 9, 10],
+            "ID_unico": ["uno", "uno", "uno", "uno", "dos", "dos", "dos"],
+        }
+    )
 
     obtained_data_modified = fill_empty_age(two_ids_data_modified)
-    assert_frame_equal(obtained_data_modified, expected_data_modified)
+    assert_frame_equal(obtained_data_modified, expected_data_modified.Edad)
