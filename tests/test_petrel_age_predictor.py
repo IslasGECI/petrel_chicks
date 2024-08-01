@@ -222,7 +222,7 @@ def test_fill_age_empty():
     two_ids_data_modified = pd.DataFrame(
         {
             "Edad": [4, np.nan, 6, np.nan, np.nan, 9, 10],
-            "ID_unico": ["uno", "uno", "uno", "uno", "dos", "dos"],
+            "ID_unico": ["uno", "uno", "uno", "uno", "dos", "dos", "dos"],
         }
     )
     expected_data_modified = pd.DataFrame({"Edad": [4, 5, 6, 7, 8, 9, 10]})
