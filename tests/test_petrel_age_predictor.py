@@ -2,10 +2,11 @@ import hashlib
 from petrel_chicks import (
     Cleaner_Morphometric,
     Fitter,
-    Predictions_and_Parameters,
     Plotter,
-    get_subset_morphometric_data,
+    Predictions_and_Parameters,
     correct_age,
+    fill_empty_age,
+    get_subset_morphometric_data,
     select_data_per_burrow,
     update_with_age,
 )
@@ -210,3 +211,10 @@ def test_update_with_age():
     expected_data_modified = pd.DataFrame({"Edad": [4, 6, 9]})
 
     assert_frame_equal(obtained_data_modified, expected_data_modified)
+
+
+def test_fill_age_empty():
+    raw_data_modified = pd.DataFrame({"Edad": [4, "NA", 6, np.nan, "NA", 9, 10]})
+    expected_data_modified = pd.DataFrame({"Edad": [4, 5, 6, 7, 8, 9, 10]})
+    obtained_data_modified = fill_empty_age(raw_data_modified)
+    assert obtained_data_modified == expected_data_modified
