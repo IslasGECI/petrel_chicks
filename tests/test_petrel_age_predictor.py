@@ -4,6 +4,7 @@ from petrel_chicks import (
     Fitter,
     Plotter,
     Predictions_and_Parameters,
+    bfill_empty_age,
     correct_age,
     fill_empty_age,
     get_subset_morphometric_data,
@@ -229,4 +230,32 @@ def test_fill_age_empty():
         }
     )
     obtained_data_modified = fill_empty_age(raw_data_modified)
+    assert_frame_equal(obtained_data_modified, expected_data_modified)
+    raw_data_modified = pd.DataFrame(
+        {"Edad": [np.nan, 9, 10], "ID_nido": ["uno", "uno", "uno"], "Year": [2013, 2013, 2013]}
+    )
+    expected_data_modified = pd.DataFrame(
+        {"Edad": [8, 9, 10], "ID_nido": ["uno", "uno", "uno"], "Year": [2013, 2013, 2013]}
+    )
+    obtained_data_modified = bfill_empty_age(raw_data_modified)
+    assert_frame_equal(obtained_data_modified, expected_data_modified)
+
+
+def tests_two_ids():
+    two_ids_data_modified = pd.DataFrame(
+        {
+            "Edad": [4, np.nan, 6, np.nan, np.nan, 9, 10],
+            "ID_nido": ["uno", "uno", "uno", "uno", "dos", "dos", "dos"],
+            "Year": [2013, 2013, 2013, 2013, 2013, 2013, 2013],
+        }
+    )
+    expected_data_modified = pd.DataFrame(
+        {
+            "Edad": [4, 5, 6, 7, 8, 9, 10],
+            "ID_nido": ["uno", "uno", "uno", "uno", "dos", "dos", "dos"],
+            "Year": [2013, 2013, 2013, 2013, 2013, 2013, 2013],
+        }
+    )
+
+    obtained_data_modified = fill_empty_age(two_ids_data_modified)
     assert_frame_equal(obtained_data_modified, expected_data_modified)
