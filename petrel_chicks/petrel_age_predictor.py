@@ -180,3 +180,8 @@ def update_with_age(data_modified, data_per_burrow):
     df_index = data_per_burrow.index.values
     for i in range(0, len(data_per_burrow)):
         data_modified.loc[df_index[i], "Edad"] = int(data_per_burrow["age_predictions"].iloc[i])
+
+
+def fill_empty_age(updated_age_data):
+    updated_age_data["Edad"] = updated_age_data.Edad.interpolate(method="linear").astype(int)
+    return updated_age_data
