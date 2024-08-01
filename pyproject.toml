@@ -13,6 +13,7 @@ requires = [
     "geci_plots @ git+https://github.com/IslasGECI/geci_plots.git@v0.4.0",
     "lmfit",
     "mean_differences_mc @ git+https://github.com/IslasGECI/mean_differences_mc.git",
+    "numpy==1.26.4",
     "pandasql",
     "scikit-learn==1.1.3",
 ]
