@@ -185,7 +185,7 @@ def update_with_age(data_modified, data_per_burrow):
 def fill_empty_age(updated_age_data):
     na_values_with_ffill = updated_age_data.groupby(
         [updated_age_data.ID_nido, updated_age_data.Year]
-    ).Edad.fillna(method="ffill")
+    ).Edad.ffill()
     increment_value = updated_age_data.groupby(
         [updated_age_data.ID_nido, updated_age_data.Year, updated_age_data.Edad.notnull().cumsum()]
     ).cumcount()
