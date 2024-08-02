@@ -1,12 +1,13 @@
 import hashlib
 from petrel_chicks import (
+    bfill_empty_age,
     Cleaner_Morphometric,
-    Fitter,
-    Plotter,
-    Predictions_and_Parameters,
     correct_age,
     fill_empty_age,
+    Fitter,
     get_subset_morphometric_data,
+    Plotter,
+    Predictions_and_Parameters,
     select_data_per_burrow,
     update_with_age,
 )

@@ -189,19 +189,9 @@ def fill_empty_age(updated_age_data):
     increment_value = updated_age_data.groupby(
         [updated_age_data.ID_nido, updated_age_data.Year, updated_age_data.Edad.notnull().cumsum()]
     ).cumcount()
-    print("paso2:", increment_value)
     updated_age_data["Edad"] = na_values_with_ffill + increment_value
     return updated_age_data
 
 
-def _fill_empty_age_with_for_cycle(updated_age_data):
-    grouped_by_id = updated_age_data.groupby("ID_unico")
-    for index_group in grouped_by_id.groups.keys():
-        print(index_group)
-        updated_age_data_by_id = grouped_by_id.get_group(index_group)
-        print(updated_age_data_by_id)
-        updated_age_data_by_id["Edad"] = updated_age_data_by_id.Edad.interpolate(
-            method="linear", limit_direction="both"
-        ).astype(int)
-        print(updated_age_data_by_id)
-    return updated_age_data_by_id
+def bfill_empty_age(updated_age_data):
+    pass
