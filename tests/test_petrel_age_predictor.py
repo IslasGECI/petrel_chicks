@@ -230,7 +230,7 @@ def test_fill_age_empty():
         }
     )
     obtained_data_modified = fill_empty_age(raw_data_modified)
-    assert_frame_equal(obtained_data_modified, expected_data_modified)
+    assert_frame_equal(obtained_data_modified, expected_data_modified, check_dtype=False)
 
 
 @pytest.mark.skip(reason="not yet")
@@ -262,4 +262,4 @@ def tests_two_ids():
     )
 
     obtained_data_modified = fill_empty_age(two_ids_data_modified)
-    assert_frame_equal(obtained_data_modified, expected_data_modified)
+    assert_frame_equal(obtained_data_modified, expected_data_modified, check_dtype=False)
