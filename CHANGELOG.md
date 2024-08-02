@@ -15,6 +15,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.2.1] - 2024-08-02
+
+### Fixed
+
+- Function `fill_empty_age()` correctly fill with different nests. This functions now expect `ID_nido` and `Year` columns to fill age by each chick.
+
 ## [0.2.0] - 2024-08-01
 
 ### Added
