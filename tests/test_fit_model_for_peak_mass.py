@@ -1,6 +1,4 @@
 from petrel_chicks.fit_model_for_peak_mass import (
-    fit_model_mass_vs_age,
-    find_age_for_max_mass,
     find_age_for_max_mass_from_data,
 )
 
