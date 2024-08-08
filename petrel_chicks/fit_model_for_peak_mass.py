@@ -11,8 +11,8 @@ def find_age_for_max_mass(parameters):
 
 
 def fit_model_mass_vs_age(ages_and_mass):
-    return curve_fit(polinomio, ages_and_mass.Edad, ages_and_mass.Masa)
+    return curve_fit(quadratic_function, ages_and_mass.Edad, ages_and_mass.Masa)
 
 
-def polinomio(x, a, b, c):
+def quadratic_function(x, a, b, c):
     return a * x**2 + b * x + c
