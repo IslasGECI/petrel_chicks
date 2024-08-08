@@ -1,4 +1,4 @@
-from petrel_chicks.fit_model_for_peak_mass import fit_model_for_peak_mass
+from petrel_chicks.fit_model_for_peak_mass import fit_model_age_vs_mass
 
 import pandas as pd
 
