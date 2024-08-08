@@ -60,18 +60,15 @@ def test_Fitter(mocker):
     mocker.patch(
         "petrel_chicks.petrel_age_predictor.Cleaner_Morphometric.train_test_split", train_test_split
     )
-    Morphometric_Data = Cleaner_Morphometric(
-        petrel_data, features_list, observables_list)
+    Morphometric_Data = Cleaner_Morphometric(petrel_data, features_list, observables_list)
     Fitter_model = Fitter(Morphometric_Data)
     assert Fitter_model.lineal_model.normalize
     Fitter_model.fit_model()
     Fitter_model.predict()
-    are_equal = np.allclose(Fitter_model.predictions,
-                            np.array([0.5, 1.0, 1.5]))
+    are_equal = np.allclose(Fitter_model.predictions, np.array([0.5, 1.0, 1.5]))
     assert are_equal
     Fitter_model.calculate_absolute_error()
-    are_equal = np.allclose(
-        Fitter_model.absolute_error_in_days, np.array([3.5, 3.0, 2.5]))
+    are_equal = np.allclose(Fitter_model.absolute_error_in_days, np.array([3.5, 3.0, 2.5]))
     assert are_equal
     predictions_dict, linear_model_parameters = Fitter_model.calculate_results()
     assert "Edades" in predictions_dict.keys()
@@ -141,14 +138,12 @@ def test_get_subset_morphometric_data(mocker):
         "Fecha_dt": [datetime(2021, 1, 1), datetime(2021, 2, 2), datetime(2021, 3, 3)],
     }
     expected_data_subset = pd.DataFrame(expected_data_subset_dictionary)
-    data_subset = pd.DataFrame(
-        {"Fecha": ["01/Ene/2021", "02/Feb/2021", "03/Mar/2021"]})
+    data_subset = pd.DataFrame({"Fecha": ["01/Ene/2021", "02/Feb/2021", "03/Mar/2021"]})
     Cleaner_Morphometric = mocker.Mock()
     Cleaner_Morphometric.data_subset = data_subset.copy()
     Predictor = mocker.Mock()
     Predictor.predictions = predictions
-    obtained_data_subset = get_subset_morphometric_data(
-        Cleaner_Morphometric, Predictor)
+    obtained_data_subset = get_subset_morphometric_data(Cleaner_Morphometric, Predictor)
     assert_frame_equal(obtained_data_subset, expected_data_subset)
 
 
@@ -166,13 +161,11 @@ def delete_data_processed():
 
 def test_correct_age():
     delta = timedelta(days=50)
-    data_dict = {"age_predictions": [2, 2, 2],
-                 "Time_diff_days": [delta, delta, delta]}
+    data_dict = {"age_predictions": [2, 2, 2], "Time_diff_days": [delta, delta, delta]}
     obtained_data_per_burrow = pd.DataFrame(data_dict)
     correct_age(obtained_data_per_burrow)
 
-    expected_data_dict = {"age_predictions": [
-        2, 52, 102], "Time_diff_days": [delta, delta, delta]}
+    expected_data_dict = {"age_predictions": [2, 52, 102], "Time_diff_days": [delta, delta, delta]}
     expected_data_per_burrow = pd.DataFrame(expected_data_dict)
 
     assert_frame_equal(obtained_data_per_burrow, expected_data_per_burrow)
@@ -238,19 +231,16 @@ def test_fill_age_empty():
         }
     )
     obtained_data_modified = fill_empty_age(raw_data_modified)
-    assert_frame_equal(obtained_data_modified,
-                       expected_data_modified, check_dtype=False)
+    assert_frame_equal(obtained_data_modified, expected_data_modified, check_dtype=False)
 
 
 @pytest.mark.skip(reason="not yet")
 def tests_bfill_empty_age():
     raw_data_modified = pd.DataFrame(
-        {"Edad": [np.nan, 9, 10], "ID_nido": [
-            "uno", "uno", "uno"], "Year": [2013, 2013, 2013]}
+        {"Edad": [np.nan, 9, 10], "ID_nido": ["uno", "uno", "uno"], "Year": [2013, 2013, 2013]}
     )
     expected_data_modified = pd.DataFrame(
-        {"Edad": [8, 9, 10], "ID_nido": [
-            "uno", "uno", "uno"], "Year": [2013, 2013, 2013]}
+        {"Edad": [8, 9, 10], "ID_nido": ["uno", "uno", "uno"], "Year": [2013, 2013, 2013]}
     )
     obtained_data_modified = bfill_empty_age(raw_data_modified)
     assert_frame_equal(obtained_data_modified, expected_data_modified)
@@ -273,5 +263,4 @@ def tests_two_ids():
     )
 
     obtained_data_modified = fill_empty_age(two_ids_data_modified)
-    assert_frame_equal(obtained_data_modified,
-                       expected_data_modified, check_dtype=False)
+    assert_frame_equal(obtained_data_modified, expected_data_modified, check_dtype=False)
