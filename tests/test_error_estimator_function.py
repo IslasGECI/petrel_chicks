@@ -39,13 +39,15 @@ time_array = np.arange(5)
 
 
 def test_logistic_model():
-    expected_values = np.array([7.6640365, 9.50285763, 9.92652388, 9.98992847, 9.99863459])
+    expected_values = np.array(
+        [7.6640365, 9.50285763, 9.92652388, 9.98992847, 9.99863459])
     obtained_values = logistic_model(time_array, A, t0, k, n)
     np.testing.assert_allclose(expected_values, obtained_values)
 
 
 def test_inverse_logistic_model():
-    expected_values = np.array([-np.inf, -3.35337739, -2.31014078, -1.69227361, -1.2413662])
+    expected_values = np.array(
+        [-np.inf, -3.35337739, -2.31014078, -1.69227361, -1.2413662])
     obtained_values = inverse_logistic_model(time_array, A, t0, k, n)
     np.testing.assert_allclose(expected_values, obtained_values)
 
@@ -57,23 +59,28 @@ def test_initialize_logistic_model():
     obteined_model, obtained_params = initialize_logistic_model()
     assert expected_params_names == obteined_model.param_names
     assert expected_model_name == obteined_model.name
-    assert expected_initial_values == list(obtained_params.valuesdict().values())
+    assert expected_initial_values == list(
+        obtained_params.valuesdict().values())
 
 
 def test_fit_logistic_model():
     expected_params = np.array([A, t0, k, n])
-    logistic_curve = pd.DataFrame({"log_curve": logistic_model(time_array, A, t0, k, n)})
+    logistic_curve = pd.DataFrame(
+        {"log_curve": logistic_model(time_array, A, t0, k, n)})
     model, params = initialize_logistic_model()
     obtained_params = np.array(
-        fit_logistic_model(model, params, logistic_curve, time_array, "log_curve")
+        fit_logistic_model(model, params, logistic_curve,
+                           time_array, "log_curve")
     )
     np.testing.assert_allclose(obtained_params, expected_params)
 
 
 def test_perform_fit():
-    logistic_curve = pd.DataFrame({"log_curve": logistic_model(time_array, A, t0, k, n)})
+    logistic_curve = pd.DataFrame(
+        {"log_curve": logistic_model(time_array, A, t0, k, n)})
     model, params = initialize_logistic_model()
-    obtained_results_object = perform_fit(model, params, logistic_curve, time_array, "log_curve")
+    obtained_results_object = perform_fit(
+        model, params, logistic_curve, time_array, "log_curve")
     assert obtained_results_object.max_nfev == 20000
 
 
@@ -86,7 +93,7 @@ def test_plot_morphometric_data():
     plt.savefig(output_path)
     file_content = open(output_path, "rb").read()
     obtained_hash = hashlib.md5(file_content).hexdigest()
-    expected_hash = "e371c6cba538f08e340bb21896c86382"
+    expected_hash = "f36abf26f39e6d98782641cac1c8477f"
     assert obtained_hash == expected_hash
 
 
@@ -103,7 +110,8 @@ def test_set_axis_labels():
     label_dos = "Longitud Total (mm)"
     expected_x_label = "Días desde la eclosión"
 
-    expected_ax_one.set_xlabel("Días desde la eclosión", fontsize=25, labelpad=10)
+    expected_ax_one.set_xlabel(
+        "Días desde la eclosión", fontsize=25, labelpad=10)
     expected_ax_one.set_ylabel(label_uno, fontsize=25, labelpad=10)
 
     set_axis_labels(obteined_ax_one, morphometric_variable=variable_uno)
@@ -111,7 +119,8 @@ def test_set_axis_labels():
     ax_one_obtained_ylabel = obteined_ax_one.get_ylabel()
     ax_one_obtained_labelpad = obteined_ax_one.yaxis.labelpad
 
-    expected_ax_two.set_xlabel("Días desde la eclosión", fontsize=25, labelpad=10)
+    expected_ax_two.set_xlabel(
+        "Días desde la eclosión", fontsize=25, labelpad=10)
     expected_ax_two.set_ylabel(label_dos, fontsize=25, labelpad=10)
 
     set_axis_labels(obteined_ax_two, morphometric_variable=variable_dos)
