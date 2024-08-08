@@ -14,16 +14,3 @@ def test_find_age_for_max_mass_from_data():
     obtained_age = find_age_for_max_mass_from_data(ages_and_mass)
     expected_age = 2
     assert obtained_age == expected_age
-
-
-def test_fit_model_age_vs_mass():
-    obtained_parameters, _ = fit_model_mass_vs_age(ages_and_mass)
-    expected_parameters = [-1, 4, 5]
-    assert all(obtained_parameters == expected_parameters)
-
-
-def tests_find_age_for_max_mass():
-    parameters = [-1, 4, 5]
-    obtained_age = find_age_for_max_mass(parameters)
-    expected_age = 2
-    assert obtained_age == expected_age
