@@ -1,4 +1,5 @@
 from scipy.optimize import curve_fit
+import numpy as np
 
 
 def find_age_for_max_mass_from_data(age_mass_data):
@@ -7,11 +8,14 @@ def find_age_for_max_mass_from_data(age_mass_data):
 
 
 def find_age_for_max_mass(parameters):
-    return -parameters[1] / (2 * parameters[0])
+    return int(-parameters[1] / (2 * parameters[0]))
 
 
 def fit_model_mass_vs_age(ages_and_mass):
-    return curve_fit(quadratic_function, ages_and_mass.Edad, ages_and_mass.Masa)
+    ages_and_mass_without_na = ages_and_mass.dropna(subset=["Edad", "Masa"])
+    return curve_fit(
+        quadratic_function, ages_and_mass_without_na.Edad, ages_and_mass_without_na.Masa
+    )
 
 
 def quadratic_function(x, a, b, c):
