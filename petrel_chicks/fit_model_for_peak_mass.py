@@ -1,5 +1,4 @@
 from scipy.optimize import curve_fit
-import numpy as np
 
 
 def find_age_for_max_mass_from_data(age_mass_data):
