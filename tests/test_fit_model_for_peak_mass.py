@@ -1,6 +1,7 @@
 from petrel_chicks.fit_model_for_peak_mass import (
     find_age_for_max_mass_from_data,
     calculate_max_weights_from_given_age,
+    calculate_peak_mass_from_model_by_season,
 )
 
 import pandas as pd
@@ -31,3 +32,17 @@ def test_calculate_max_weights_from_given_age():
     obtained = calculate_max_weights_from_given_age(df, age)
     assert len(obtained) == 2
     assert np.isnan(obtained.Peak_mass[0])
+
+
+def test_calculate_peak_mass_from_model_by_season():
+    df = pd.DataFrame(
+        {
+            "ID_unico": ["c-2013", "c-2013", "c-2013", "c-2013", "c-2013"],
+            "Temporada": [2013, 2013, 2013, 2013, 2013],
+            "Masa": [5, 8, 0, 10, 8.1],
+            "Edad": [0, 1, -1, 2, 3],
+        }
+    )
+    print(find_age_for_max_mass_from_data(df))
+    obtained = calculate_peak_mass_from_model_by_season(df)
+    assert obtained[obtained.ID_unico == "c-2013"].Peak_mass == 8
