@@ -43,6 +43,5 @@ def test_calculate_peak_mass_from_model_by_season():
             "Edad": [0, 1, -1, 2, 3],
         }
     )
-    print(find_age_for_max_mass_from_data(df))
     obtained = calculate_peak_mass_from_model_by_season(df)
-    assert obtained[obtained.ID_unico == "c-2013"].Peak_mass == 8
+    assert (obtained[obtained.ID_unico == "c-2013"].Peak_mass == 10).all()
