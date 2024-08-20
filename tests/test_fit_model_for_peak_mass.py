@@ -27,3 +27,7 @@ def test_calculate_max_weights_from_given_age():
     age = 1
     obtained = calculate_max_weights_from_given_age(df, age)
     assert len(obtained) == 2
+    age = 3
+    obtained = calculate_max_weights_from_given_age(df, age)
+    assert len(obtained) == 2
+    assert np.isnan(obtained.Peak_mass[0])
