@@ -28,3 +28,8 @@ def calculate_max_weights_from_given_age(df, age):
         peak_mass_value = data[data.Edad == age].Masa.max()
         peak_mass_list.append([group, peak_mass_value])
     return pd.DataFrame(peak_mass_list, columns=["ID_unico", "Peak_mass"])
+
+
+def calculate_peak_mass_from_model_by_season(df):
+    age_per_seasons = find_age_for_max_mass_from_data(df)
+    return calculate_max_weights_from_given_age(df, age_per_seasons)
