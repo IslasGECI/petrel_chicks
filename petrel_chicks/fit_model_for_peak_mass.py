@@ -1,4 +1,5 @@
 from scipy.optimize import curve_fit
+import pandas as pd
 
 
 def find_age_for_max_mass_from_data(age_mass_data):
@@ -19,3 +20,11 @@ def fit_model_mass_vs_age(ages_and_mass):
 
 def quadratic_function(x, a, b, c):
     return a * x**2 + b * x + c
+
+
+def calculate_max_weights_from_given_age(df, age):
+    peak_mass_list = []
+    for group, data in df.groupby("ID_unico"):
+        peak_mass_value = data[data.Edad == age].Masa.max()
+        peak_mass_list.append([group, peak_mass_value])
+    return pd.DataFrame(peak_mass_list, columns=["ID_unico", "Peak_mass"])
