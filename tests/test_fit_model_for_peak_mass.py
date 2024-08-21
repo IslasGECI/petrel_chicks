@@ -45,3 +45,16 @@ def test_calculate_peak_mass_from_model_by_season():
     )
     obtained = calculate_peak_mass_from_model_by_season(df)
     assert (obtained[obtained.ID_unico == "c-2013"].Peak_mass == 10).all()
+    df_other_season = pd.DataFrame(
+        {
+            "ID_unico": ["c-2014", "c-2014", "c-2014", "a-2014", "a-2014"],
+            "Temporada": [2014, 2014, 2014, 2014, 2014],
+            "Masa": [5, 8, 0, 10, 8.1],
+            "Edad": [2, 3, 1, 4, 5],
+        }
+    )
+    df_two_seasons = pd.concat([df, df_other_season], ignore_index=True)
+    obtained = calculate_peak_mass_from_model_by_season(df_two_seasons)
+    assert (obtained[obtained.ID_unico == "a-2014"].Peak_mass == 10).all()
+    assert len(obtained) == 3
+    assert (obtained[obtained.ID_unico == "c-2013"].Peak_mass == 10).all()
