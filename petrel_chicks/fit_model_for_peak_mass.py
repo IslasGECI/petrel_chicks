@@ -35,5 +35,6 @@ def calculate_peak_mass_from_model_by_season(df):
     for _, data in df.groupby("Temporada"):
         age_per_seasons = find_age_for_max_mass_from_data(data)
         peak_mass_df = calculate_max_weights_from_given_age(data, age_per_seasons)
+        peak_mass_df["Edad_peak_mass"] = age_per_seasons
         peak_mass_list.append(peak_mass_df)
     return pd.concat(peak_mass_list, ignore_index=True)
