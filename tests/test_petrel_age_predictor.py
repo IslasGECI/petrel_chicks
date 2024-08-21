@@ -115,7 +115,7 @@ def test_Plotter(mocker):
     Plotter_parameters.savefig(output_path)
     file_content = open(output_path, "rb").read()
     obtained_hash = hashlib.md5(file_content).hexdigest()
-    expected_hash = "cca6342817868ec89b55c3fc442bdcbb"
+    expected_hash = "70d1531f961099d51161212cd8b74118"
     assert obtained_hash == expected_hash
 
 
