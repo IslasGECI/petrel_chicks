@@ -58,3 +58,4 @@ def test_calculate_peak_mass_from_model_by_season():
     assert (obtained[obtained.ID_unico == "a-2014"].Peak_mass == 10).all()
     assert len(obtained) == 3
     assert (obtained[obtained.ID_unico == "c-2013"].Peak_mass == 10).all()
+    assert "Edad_peak_mass" in obtained.columns
