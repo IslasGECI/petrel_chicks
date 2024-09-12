@@ -1,6 +1,6 @@
 import pandas as pd
 
-from petrel_chicks import filterPerSeason
+from petrel_chicks import add_anio_column, filterPerSeason
 
 
 def test_filterPerSeason():
@@ -37,3 +37,10 @@ def test_filterPerSeason():
 
     expected_resume = [2024, 4, 2, 2]
     assert (obtained.iloc[0].values == expected_resume).all()
+
+
+def test_add_anio_column():
+    df = pd.DataFrame({"Fecha": ["12/Sep/2024", "12/Sep/2025"]})
+    obtained = add_anio_column(df)
+    expected_years = [2024, 2025]
+    assert obtained.Anio == expected_years
