@@ -49,6 +49,5 @@ def tests_adapt_data():
 def test_add_anio_column():
     df = pd.DataFrame({"Fecha": ["12/Sep/2024", "12/Sep/2025", "12/Ago/2026"]})
     obtained = add_anio_column(df)
-    print(obtained)
     expected_years = [2024, 2025, 2026]
     assert (obtained.Anio == expected_years).all()
