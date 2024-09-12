@@ -43,6 +43,7 @@ def tests_adapt_data():
     path = "tests/data/medidas_morfometricas_petrel_san_benito.csv"
     obtained = adapt_data(path)
     assert isinstance(obtained, pd.DataFrame)
+    assert "Anio" in obtained.columns
 
 
 def test_add_anio_column():
