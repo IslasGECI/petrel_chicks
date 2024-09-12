@@ -1,6 +1,6 @@
 import pandas as pd
 
-from petrel_chicks import add_anio_column, filterPerSeason
+from petrel_chicks import adapt_data, add_anio_column, filterPerSeason
 
 
 def test_filterPerSeason():
@@ -39,8 +39,15 @@ def test_filterPerSeason():
     assert (obtained.iloc[0].values == expected_resume).all()
 
 
+def tests_adapt_data():
+    path = "tests/data/medidas_morfometricas_petrel_san_benito.csv"
+    obtained = adapt_data(path)
+    assert isinstance(obtained, pd.DataFrame)
+
+
 def test_add_anio_column():
     df = pd.DataFrame({"Fecha": ["12/Sep/2024", "12/Sep/2025", "12/Ago/2026"]})
     obtained = add_anio_column(df)
+    print(obtained)
     expected_years = [2024, 2025, 2026]
     assert (obtained.Anio == expected_years).all()
