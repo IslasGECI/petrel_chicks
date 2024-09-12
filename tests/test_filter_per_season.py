@@ -40,7 +40,7 @@ def test_filterPerSeason():
 
 
 def test_add_anio_column():
-    df = pd.DataFrame({"Fecha": ["12/Sep/2024", "12/Sep/2025"]})
+    df = pd.DataFrame({"Fecha": ["12/Sep/2024", "12/Sep/2025", "12/Ago/2026"]})
     obtained = add_anio_column(df)
-    expected_years = [2024, 2025]
-    assert obtained.Anio == expected_years
+    expected_years = [2024, 2025, 2026]
+    assert (obtained.Anio == expected_years).all()
