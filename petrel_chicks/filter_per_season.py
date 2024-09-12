@@ -20,6 +20,10 @@ def filterPerSeason(data):
     return dataframe
 
 
+def adapt_data(path):
+    return pd.read_csv(path)
+
+
 def add_anio_column(df):
     df["Anio"] = df.Fecha.str.extract(r"(\d{4})").astype(int)
     return df
