@@ -18,3 +18,8 @@ def filterPerSeason(data):
 
     dataframe = pd.DataFrame(data=data)
     return dataframe
+
+
+def add_anio_column(df):
+    df["Anio"] = pd.to_datetime(df.Fecha).dt.year
+    return df
