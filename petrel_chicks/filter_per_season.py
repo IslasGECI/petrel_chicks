@@ -21,7 +21,8 @@ def filterPerSeason(data):
 
 
 def adapt_data(path):
-    return pd.read_csv(path)
+    df = pd.read_csv(path)
+    return add_anio_column(df)
 
 
 def add_anio_column(df):
