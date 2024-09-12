@@ -21,5 +21,5 @@ def filterPerSeason(data):
 
 
 def add_anio_column(df):
-    df["Anio"] = pd.to_datetime(df.Fecha).dt.year
+    df["Anio"] = df.Fecha.str.extract(r"(\d{4})").astype(int)
     return df
