@@ -1,5 +1,6 @@
 import geci_plots as gp
 import matplotlib.pyplot as plt
+import numpy as np
 
 from petrel_chicks.fit_model_for_peak_mass import fit_model_mass_vs_age, quadratic_function
 
@@ -9,7 +10,9 @@ def plot_peak_mass_model_and_data(df):
 
     plt.scatter(df.Edad, df.Masa)
     predicted_mass = get_fitted_mass(df)
-    plt.plot(df.Edad, predicted_mass)
+
+    age = np.linspace(df.Edad.min(), df.Edad.max(), len(df.Edad))
+    plt.plot(age, predicted_mass)
     plt.ylabel("Mass $\\left( g \\right)$")
     plt.xlabel("Chick age $\\left( d \\right)$")
     return ax
