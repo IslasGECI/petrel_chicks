@@ -23,3 +23,5 @@ def test_plot_peak_mass_model():
     obtained_y_label = obtained_ax.get_xlabel()
     expected_y_label = "Chick age $\\left( d \\right)$"
     assert obtained_y_label == expected_y_label
+
+    assert isinstance(obtained_ax._children[1], plt.lines.Line2D)
