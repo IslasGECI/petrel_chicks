@@ -1,6 +1,8 @@
 import geci_plots as gp
 import matplotlib.pyplot as plt
 
+from petrel_chicks.fit_model_for_peak_mass import fit_model_mass_vs_age, quadratic_function
+
 
 def plot_peak_mass_model_and_data(df):
     _, ax = gp.geci_plot()
@@ -13,4 +15,5 @@ def plot_peak_mass_model_and_data(df):
 
 
 def get_fitted_mass(df):
-    return df.Masa
+    parameters, _ = fit_model_mass_vs_age(df)
+    return [quadratic_function(x, *parameters) for x in df.Edad]
