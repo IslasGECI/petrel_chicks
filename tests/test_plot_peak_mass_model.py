@@ -1,4 +1,9 @@
-from petrel_chicks import get_fitted_mass, plot_peak_mass_model_and_data
+from petrel_chicks import (
+    get_fitted_mass,
+    plot_peak_mass_model_and_data,
+    quadratic_function,
+    fit_model_mass_vs_age,
+)
 import pandas as pd
 import matplotlib as plt
 
@@ -33,3 +38,7 @@ def test_plot_peak_mass_model():
 def tests_get_fitted_mass():
     obtained = get_fitted_mass(df)
     assert len(obtained) == 5
+    parameters, _ = fit_model_mass_vs_age(df)
+    expected_y_values = [quadratic_function(x, *parameters) for x in df.Edad]
+    print(expected_y_values)
+    assert (obtained == expected_y_values).all()
