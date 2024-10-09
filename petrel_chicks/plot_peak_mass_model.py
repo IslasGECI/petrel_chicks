@@ -10,3 +10,7 @@ def plot_peak_mass_model_and_data(df):
     plt.ylabel("Mass $\\left( g \\right)$")
     plt.xlabel("Chick age $\\left( d \\right)$")
     return ax
+
+
+def get_fitted_mass(df):
+    return df.Masa
