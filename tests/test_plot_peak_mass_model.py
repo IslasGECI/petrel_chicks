@@ -38,7 +38,6 @@ def test_plot_peak_mass_model():
 def tests_get_fitted_mass():
     obtained = get_fitted_mass(df)
     assert len(obtained) == 5
-    parameters, _ = fit_model_mass_vs_age(df)
     expected_y_values = [
         5.157142857142857,
         8.334285714285713,
@@ -46,5 +45,4 @@ def tests_get_fitted_mass():
         9.397142857142857,
         8.345714285714283,
     ]
-    print(expected_y_values)
     assert obtained == expected_y_values
