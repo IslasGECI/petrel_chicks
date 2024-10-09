@@ -14,3 +14,7 @@ def test_plot_peak_mass_model():
     )
     obtained = plot_peak_mass_model_and_data(df)
     assert isinstance(obtained, plt.axes._axes.Axes)
+
+    obtained_y_label = obtained.get_ylabel()
+    expected_y_label = "Mass $\\left( g \\right)$"
+    assert obtained_y_label == expected_y_label
