@@ -41,6 +41,8 @@ def test_plot_peak_mass_model():
 
     assert isinstance(obtained_ax._children[1], plt.lines.Line2D)
     assert (obtained_ax._children[1].get_data()[1] == expected_y_values).all()
+    assert obtained_ax._children[1].get_data()[0][0] == -1
+    plt.pyplot.savefig("prueba.png")
 
 
 def tests_get_fitted_mass():
