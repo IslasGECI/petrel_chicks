@@ -20,6 +20,6 @@ def test_plot_peak_mass_model():
     assert obtained_y_label == expected_y_label
     assert (obtained_ax._children[0]._offsets.data[:, 1] == df.Masa).all()
 
-    obtained_y_label = obtained_ax.get_ylabel()
+    obtained_y_label = obtained_ax.get_xlabel()
     expected_y_label = "Chick age $\\left( d \\right)$"
     assert obtained_y_label == expected_y_label
