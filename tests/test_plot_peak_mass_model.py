@@ -18,4 +18,4 @@ def test_plot_peak_mass_model():
     obtained_y_label = obtained_ax.get_ylabel()
     expected_y_label = "Mass $\\left( g \\right)$"
     assert obtained_y_label == expected_y_label
-    print(obtained_plt.lines[0])
+    assert (obtained_plt._offsets.data[:, 1] == df.Masa).all()
