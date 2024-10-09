@@ -17,6 +17,14 @@ df = pd.DataFrame(
     }
 )
 
+expected_y_values = [
+    5.157142857142857,
+    8.334285714285713,
+    -0.13428571428571434,
+    9.397142857142857,
+    8.345714285714283,
+]
+
 
 def test_plot_peak_mass_model():
     obtained_ax = plot_peak_mass_model_and_data(df)
@@ -32,17 +40,11 @@ def test_plot_peak_mass_model():
     assert obtained_y_label == expected_y_label
 
     assert isinstance(obtained_ax._children[1], plt.lines.Line2D)
-    print(obtained_ax._children[1].get_data())
+    assert (obtained_ax._children[1].get_data()[1] == expected_y_values).all()
 
 
 def tests_get_fitted_mass():
     obtained = get_fitted_mass(df)
     assert len(obtained) == 5
-    expected_y_values = [
-        5.157142857142857,
-        8.334285714285713,
-        -0.13428571428571434,
-        9.397142857142857,
-        8.345714285714283,
-    ]
+
     assert obtained == expected_y_values
