@@ -44,7 +44,7 @@ def test_plot_peak_mass_model():
     assert obtained_ax.get_xaxis().get_label().get_fontsize() == expected_fontsize
     assert obtained_ax.get_yticklabels()[1].get_fontsize() == expected_fontsize
     assert obtained_ax.get_xticklabels()[1].get_fontsize() == expected_fontsize
-    assert obtained_ax.get_children[1].get_alpha() == 0.5
+    assert obtained_ax.get_children[0].get_alpha() == 0.5
     plt.pyplot.savefig("prueba.png")
 
 
