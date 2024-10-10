@@ -5,10 +5,21 @@ import matplotlib as plt
 
 df = pd.DataFrame(
     {
-        "ID_unico": ["c-2013", "c-2013", "c-2013", "c-2013", "c-2013"],
-        "Temporada": [2013, 2013, 2013, 2013, 2013],
-        "Masa": [5, 8, 0, 10, 8.1],
-        "Edad": [0, 1, -1, 2, 3],
+        "ID_unico": [
+            "c-2013",
+            "c-2013",
+            "c-2013",
+            "c-2013",
+            "d-2013",
+            "d-2013",
+            "d-2013",
+            "c-2013",
+            "c-2013",
+            "c-2013",
+        ],
+        "Temporada": [2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013],
+        "Masa": [5, 8, 0, 10, 8.1, 5, 8, 10, 15, 20],
+        "Edad": [0, 1, -1, 2, 3, 1, 3, 5, 7, 9],
     }
 )
 
@@ -33,6 +44,7 @@ def test_plot_peak_mass_model():
     assert obtained_ax.get_xaxis().get_label().get_fontsize() == expected_fontsize
     assert obtained_ax.get_yticklabels()[1].get_fontsize() == expected_fontsize
     assert obtained_ax.get_xticklabels()[1].get_fontsize() == expected_fontsize
+    assert obtained_ax.get_children[1].get_alpha() == 0.5
     plt.pyplot.savefig("prueba.png")
 
 
