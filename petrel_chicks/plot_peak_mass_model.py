@@ -12,7 +12,7 @@ def plot_peak_mass_model_and_data(df):
     plt.scatter(df.Edad, df.Masa, alpha=0.5)
     age, predicted_mass = get_fitted_points(df)
 
-    plt.plot(age, predicted_mass)
+    plt.plot(age, predicted_mass, color="r")
     plt.ylabel("Mass $\\left( g \\right)$", fontsize=fontsize)
     plt.xlabel("Chick age $\\left( d \\right)$", fontsize=fontsize)
     plt.xticks(fontsize=fontsize)
