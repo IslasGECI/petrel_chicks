@@ -23,6 +23,6 @@ def get_fitted_mass(df, age):
 
 
 def get_fitted_points(df):
-    age = np.linspace(df.Edad.min(), df.Edad.max(), len(df.Edad))
+    age = np.linspace(df.Edad.min(), df.Edad.max(), 1000)
     predicted_mass = get_fitted_mass(df, age)
     return age, predicted_mass
