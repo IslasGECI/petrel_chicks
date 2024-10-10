@@ -12,14 +12,6 @@ df = pd.DataFrame(
     }
 )
 
-expected_y_values = [
-    -0.13428571428571434,
-    5.157142857142857,
-    8.334285714285713,
-    9.397142857142857,
-    8.345714285714283,
-]
-
 
 def test_plot_peak_mass_model():
     obtained_ax = plot_peak_mass_model_and_data(df)
