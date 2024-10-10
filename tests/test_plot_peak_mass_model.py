@@ -36,8 +36,11 @@ def test_plot_peak_mass_model():
 
     assert isinstance(obtained_ax._children[1], plt.lines.Line2D)
     assert obtained_ax._children[1].get_data()[0][0] < obtained_ax._children[1].get_data()[0][-1]
-    assert obtained_ax.get_yaxis().get_label().get_fontsize() == 20.0
-    assert obtained_ax.get_xaxis().get_label().get_fontsize() == 20.0
+    expected_fontsize = 20.0
+    assert obtained_ax.get_yaxis().get_label().get_fontsize() == expected_fontsize
+    assert obtained_ax.get_xaxis().get_label().get_fontsize() == expected_fontsize
+    assert obtained_ax.get_yticklabels()[1].get_fontsize() == expected_fontsize
+    assert obtained_ax.get_xticklabels()[1].get_fontsize() == expected_fontsize
     plt.pyplot.savefig("prueba.png")
 
 
