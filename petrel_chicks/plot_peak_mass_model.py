@@ -5,7 +5,7 @@ import numpy as np
 from petrel_chicks.fit_model_for_peak_mass import fit_model_mass_vs_age, quadratic_function
 
 
-def plot_peak_mass_model_and_data(df):
+def _plot_peak_mass_model_and_data(df):
     _, ax = gp.geci_plot()
     fontsize = 20
 

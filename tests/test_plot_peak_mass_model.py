@@ -1,4 +1,4 @@
-from petrel_chicks import get_fitted_points, plot_peak_mass_model_and_data
+from petrel_chicks import get_fitted_points, _plot_peak_mass_model_and_data
 import pandas as pd
 import matplotlib as plt
 
@@ -25,7 +25,7 @@ df = pd.DataFrame(
 
 
 def test_plot_peak_mass_model():
-    obtained_ax = plot_peak_mass_model_and_data(df)
+    obtained_ax = _plot_peak_mass_model_and_data(df)
     assert isinstance(obtained_ax, plt.axes._axes.Axes)
 
     obtained_y_label = obtained_ax.get_ylabel()
