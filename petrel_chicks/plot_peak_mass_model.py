@@ -7,15 +7,16 @@ from petrel_chicks.fit_model_for_peak_mass import fit_model_mass_vs_age, quadrat
 
 def plot_peak_mass_model_and_data(df):
     _, ax = gp.geci_plot()
+    fontsize = 20
 
     plt.scatter(df.Edad, df.Masa)
     age, predicted_mass = get_fitted_points(df)
 
     plt.plot(age, predicted_mass)
-    plt.ylabel("Mass $\\left( g \\right)$", fontsize=20)
-    plt.xlabel("Chick age $\\left( d \\right)$", fontsize=20)
-    plt.xticks(fontsize=20)
-    plt.yticks(fontsize=20)
+    plt.ylabel("Mass $\\left( g \\right)$", fontsize=fontsize)
+    plt.xlabel("Chick age $\\left( d \\right)$", fontsize=fontsize)
+    plt.xticks(fontsize=fontsize)
+    plt.yticks(fontsize=fontsize)
     return ax
 
 
