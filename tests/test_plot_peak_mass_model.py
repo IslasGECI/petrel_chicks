@@ -31,14 +31,17 @@ def test_plot_peak_mass_model():
     obtained_y_label = obtained_ax.get_ylabel()
     expected_y_label = "Mass $\\left( g \\right)$"
     assert obtained_y_label == expected_y_label
-    assert (obtained_ax._children[0]._offsets.data[:, 1] == df.Masa).all()
+    assert (obtained_ax.get_children()[0]._offsets.data[:, 1] == df.Masa).all()
 
     obtained_y_label = obtained_ax.get_xlabel()
     expected_y_label = "Chick age $\\left( d \\right)$"
     assert obtained_y_label == expected_y_label
 
-    assert isinstance(obtained_ax._children[1], plt.lines.Line2D)
-    assert obtained_ax._children[1].get_data()[0][0] < obtained_ax._children[1].get_data()[0][-1]
+    assert isinstance(obtained_ax.get_children()[1], plt.lines.Line2D)
+    assert (
+        obtained_ax.get_children()[1].get_data()[0][0]
+        < obtained_ax.get_children()[1].get_data()[0][-1]
+    )
     expected_fontsize = 20.0
     assert obtained_ax.get_yaxis().get_label().get_fontsize() == expected_fontsize
     assert obtained_ax.get_xaxis().get_label().get_fontsize() == expected_fontsize
