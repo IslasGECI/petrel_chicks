@@ -17,6 +17,7 @@ def plot_peak_mass_model_and_data(df):
     plt.xlabel("Chick age $\\left( d \\right)$", fontsize=fontsize)
     plt.xticks(fontsize=fontsize)
     plt.yticks(fontsize=fontsize)
+    plt.legend(["Measured bird mass", "Fitted model"])
     return ax
 
 
