@@ -9,9 +9,8 @@ def plot_peak_mass_model_and_data(df):
     _, ax = gp.geci_plot()
 
     plt.scatter(df.Edad, df.Masa)
-    predicted_mass = get_fitted_mass(df)
+    age, predicted_mass = xxget_fitted_mass(df)
 
-    age = np.linspace(df.Edad.min(), df.Edad.max(), len(df.Edad))
     plt.plot(age, predicted_mass)
     plt.ylabel("Mass $\\left( g \\right)$")
     plt.xlabel("Chick age $\\left( d \\right)$")
