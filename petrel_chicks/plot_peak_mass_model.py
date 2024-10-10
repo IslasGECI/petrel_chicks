@@ -22,3 +22,10 @@ def get_fitted_mass(df):
     parameters, _ = fit_model_mass_vs_age(df)
     age = np.linspace(df.Edad.min(), df.Edad.max(), len(df.Edad))
     return [quadratic_function(x, *parameters) for x in age]
+
+
+def xxget_fitted_mass(df):
+    parameters, _ = fit_model_mass_vs_age(df)
+    age = np.linspace(df.Edad.min(), df.Edad.max(), len(df.Edad))
+    predicted_mass = [quadratic_function(x, *parameters) for x in age]
+    return age, predicted_mass
