@@ -17,13 +17,12 @@ def plot_peak_mass_model_and_data(df):
     return ax
 
 
-def get_fitted_mass(df):
+def get_fitted_mass(df, age):
     parameters, _ = fit_model_mass_vs_age(df)
-    age = np.linspace(df.Edad.min(), df.Edad.max(), len(df.Edad))
     return [quadratic_function(x, *parameters) for x in age]
 
 
 def get_fitted_points(df):
     age = np.linspace(df.Edad.min(), df.Edad.max(), len(df.Edad))
-    predicted_mass = get_fitted_mass(df)
+    predicted_mass = get_fitted_mass(df, age)
     return age, predicted_mass
