@@ -41,7 +41,7 @@ def test_plot_peak_mass_model():
 
 def tests_get_fitted_mass():
     _, obtained = get_fitted_points(df)
-    assert len(obtained) == 5
+    assert len(obtained) == 1000
 
     assert obtained == expected_y_values
     assert obtained == expected_y_values
