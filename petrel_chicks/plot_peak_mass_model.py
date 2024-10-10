@@ -9,7 +9,7 @@ def plot_peak_mass_model_and_data(df):
     _, ax = gp.geci_plot()
     fontsize = 20
 
-    plt.scatter(df.Edad, df.Masa)
+    plt.scatter(df.Edad, df.Masa, alpha=0.5)
     age, predicted_mass = get_fitted_points(df)
 
     plt.plot(age, predicted_mass)
