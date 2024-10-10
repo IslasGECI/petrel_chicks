@@ -19,3 +19,6 @@ requires = [
     "typer[all]",
 ]
 requires-python=">=3.9"
+
+[tool.flit.scripts]
+petrel-chicks = "petrel_chicks.cli:cli"
