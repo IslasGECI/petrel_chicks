@@ -47,6 +47,7 @@ def test_plot_peak_mass_model():
     assert obtained_ax.get_children()[0].get_alpha() == 0.5
     assert obtained_ax.get_children()[1].get_color() == "r"
     assert obtained_ax.get_legend().get_texts()[0].get_text() == "Measured bird mass"
+    assert obtained_ax.get_legend().get_texts()[1].get_text() == "Fitted model"
     plt.pyplot.savefig("prueba.png")
 
 
