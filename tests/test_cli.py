@@ -12,3 +12,4 @@ def tests_plot():
     assert result.exit_code == 0
     assert " Input file path " in result.stdout
     assert " Season " in result.stdout
+    assert " Output file path " in result.stdout
