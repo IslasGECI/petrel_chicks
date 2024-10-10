@@ -9,7 +9,7 @@ def plot_peak_mass_model_and_data(df):
     _, ax = gp.geci_plot()
 
     plt.scatter(df.Edad, df.Masa)
-    age, predicted_mass = xxget_fitted_mass(df)
+    age, predicted_mass = get_fitted_points(df)
 
     plt.plot(age, predicted_mass)
     plt.ylabel("Mass $\\left( g \\right)$")
@@ -23,7 +23,7 @@ def get_fitted_mass(df):
     return [quadratic_function(x, *parameters) for x in age]
 
 
-def xxget_fitted_mass(df):
+def get_fitted_points(df):
     age = np.linspace(df.Edad.min(), df.Edad.max(), len(df.Edad))
     predicted_mass = get_fitted_mass(df)
     return age, predicted_mass
