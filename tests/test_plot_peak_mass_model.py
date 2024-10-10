@@ -1,9 +1,4 @@
-from petrel_chicks import (
-    get_fitted_mass,
-    plot_peak_mass_model_and_data,
-    quadratic_function,
-    fit_model_mass_vs_age,
-)
+from petrel_chicks import get_fitted_mass, plot_peak_mass_model_and_data
 import pandas as pd
 import matplotlib as plt
 
