@@ -14,6 +14,8 @@ def plot_peak_mass_model_and_data(df):
     plt.plot(age, predicted_mass)
     plt.ylabel("Mass $\\left( g \\right)$", fontsize=20)
     plt.xlabel("Chick age $\\left( d \\right)$", fontsize=20)
+    plt.xticks(fontsize=20)
+    plt.yticks(fontsize=20)
     return ax
 
 
