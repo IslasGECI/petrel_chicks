@@ -1,5 +1,6 @@
 from petrel_chicks import cli
 from typer.testing import CliRunner
+import matplotlib.pyplot as plt
 from geci_test_tools import assert_exist, if_exist_remove
 
 runner = CliRunner()
@@ -29,6 +30,11 @@ def tests_plot():
     )
     assert result.exit_code == 0
     assert_exist(output_path)
+    image = plt.imread(output_path)
+    proportion_of_transparent_pixels = len(image[image[:, :, 3] == 0]) / len(
+        image[:, :, 3].flatten()
+    )
+    assert proportion_of_transparent_pixels != 0
 
 
 def tests_version():
