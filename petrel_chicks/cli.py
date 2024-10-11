@@ -9,9 +9,9 @@ cli = typer.Typer()
 
 @cli.command()
 def plot_peak_mass_model(
-    data_path: str = typer.Option("", help="Input file path"),
-    season: int = typer.Option("", help="Season"),
-    output_path: str = typer.Option("", help="Output file path"),
+    data_path: str = typer.Option(help="Input file path"),
+    season: int = typer.Option(help="Season"),
+    output_path: str = typer.Option(help="Output file path"),
 ):
     data = pd.read_csv(data_path)
     _plot_peak_mass_model_and_data_by_season(data, season)
