@@ -1,4 +1,8 @@
-from petrel_chicks import get_fitted_points, _plot_peak_mass_model_and_data
+from petrel_chicks import (
+    get_fitted_points,
+    _plot_peak_mass_model_and_data,
+    _plot_peak_mass_model_and_data_by_season,
+)
 import pandas as pd
 import matplotlib as plt
 
@@ -24,7 +28,16 @@ df = pd.DataFrame(
 )
 
 
-def test_plot_peak_mass_model():
+def test_plot_peak_mass_model_and_data_by_season():
+    season = 2015
+    df = pd.read_csv("tests/data/medidas_morfometricas_con_edades.csv")
+    obtained_ax = _plot_peak_mass_model_and_data_by_season(df, season)
+    obtained_rows = len(obtained_ax.get_children()[0].get_data()[0])
+    expected_rows = 27
+    assert obtained_rows == expected_rows
+
+
+def test_plot_peak_mass_model_and_data():
     obtained_ax = _plot_peak_mass_model_and_data(df)
     assert isinstance(obtained_ax, plt.axes._axes.Axes)
 
