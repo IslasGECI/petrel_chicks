@@ -32,7 +32,7 @@ def test_plot_peak_mass_model_and_data_by_season():
     season = 2015
     df = pd.read_csv("tests/data/medidas_morfometricas_con_edades.csv")
     obtained_ax = _plot_peak_mass_model_and_data_by_season(df, season)
-    obtained_rows = len(obtained_ax.get_children()[0].get_data()[0])
+    obtained_rows = len(obtained_ax.get_children()[0].get_offsets().data)
     expected_rows = 27
     assert obtained_rows == expected_rows
 
@@ -44,7 +44,7 @@ def test_plot_peak_mass_model_and_data():
     obtained_y_label = obtained_ax.get_ylabel()
     expected_y_label = "Mass $\\left( g \\right)$"
     assert obtained_y_label == expected_y_label
-    assert (obtained_ax.get_children()[0]._offsets.data[:, 1] == df.Masa).all()
+    assert (obtained_ax.get_children()[0].get_offsets().data[:, 1] == df.Masa).all()
 
     obtained_y_label = obtained_ax.get_xlabel()
     expected_y_label = "Chick age $\\left( d \\right)$"
