@@ -3,6 +3,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from petrel_chicks.fit_model_for_peak_mass import fit_model_mass_vs_age, quadratic_function
+from petrel_chicks.filter_per_season import add_anio_column
+
+
+def _plot_peak_mass_model_and_data_by_season(df, season):
+    df_with_year = add_anio_column(df)
+    filtered_data = df_with_year[df_with_year.Anio == season]
+    return _plot_peak_mass_model_and_data(filtered_data)
 
 
 def _plot_peak_mass_model_and_data(df):
