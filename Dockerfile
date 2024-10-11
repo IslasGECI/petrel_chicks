@@ -4,6 +4,7 @@ COPY . .
 RUN pip install --upgrade pip && pip install \
     black \
     flake8 \
+    geci-test-tools \
     mutmut \
     mypy \
     pandas-stubs \
@@ -11,5 +12,4 @@ RUN pip install --upgrade pip && pip install \
     pytest \
     pytest-cov \
     pytest-mock \
-    pytest-mpl \
-    typer
+    pytest-mpl
