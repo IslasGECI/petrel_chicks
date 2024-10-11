@@ -6,9 +6,6 @@ runner = CliRunner()
 
 
 def tests_plot():
-    result = runner.invoke(cli, ["version", "--help"])
-    assert result.exit_code == 0
-
     result = runner.invoke(cli, ["plot-peak-mass-model", "--help"])
     assert result.exit_code == 0
     assert " Input file path " in result.stdout
@@ -32,3 +29,12 @@ def tests_plot():
     )
     assert result.exit_code == 0
     assert_exist(output_path)
+
+
+def tests_version():
+    result = runner.invoke(cli, ["version", "--help"])
+    assert result.exit_code == 0
+
+    result = runner.invoke(cli, ["version"])
+    assert result.exit_code == 0
+    assert "0.3.0" in result.stdout

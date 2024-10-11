@@ -3,6 +3,8 @@ import pandas as pd
 import typer
 
 from petrel_chicks.plot_peak_mass_model import _plot_peak_mass_model_and_data_by_season
+import petrel_chicks as pc
+
 
 cli = typer.Typer()
 
@@ -21,4 +23,4 @@ def plot_peak_mass_model(
 
 @cli.command()
 def version():
-    print("version")
+    print(pc.__version__)
