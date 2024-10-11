@@ -11,7 +11,7 @@ from petrel_chicks import (
 )
 from geci_plots import geci_plot
 
-import hashlib
+from geci_test_tools import calculate_hash
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -84,9 +84,8 @@ def test_plot_morphometric_data():
     set_ticks_and_limits(ax, data_feature, "Longitud_ala")
     output_path = "tests/baseline/test_plot_morphometric_data.png"
     plt.savefig(output_path)
-    file_content = open(output_path, "rb").read()
-    obtained_hash = hashlib.md5(file_content).hexdigest()
-    expected_hash = "35a7ba96c6d5b1a7436a382f13e81cbb"
+    obtained_hash = calculate_hash(output_path)
+    expected_hash = "3d4396d997dedcf4da15e2c360365a0e"
     assert obtained_hash == expected_hash
 
 
