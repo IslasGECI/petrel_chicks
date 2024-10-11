@@ -17,7 +17,7 @@ def plot_peak_mass_model(
 ):
     data = pd.read_csv(data_path)
     _plot_peak_mass_model_and_data_by_season(data, season)
-    plt.savefig(output_path)
+    plt.savefig(output_path, transparent=True)
     plt.clf()
 
 
