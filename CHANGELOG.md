@@ -19,7 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- 
+- New cli entrypoint `petrel-chicks`.
+- New command `plot-peak-mass-model` to `petrel-chicks` entrypoint.
 
 
 ## [0.2.1] - 2024-08-02
