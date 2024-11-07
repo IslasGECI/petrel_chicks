@@ -1,6 +1,5 @@
 from petrel_chicks import (
     get_fitted_points,
-    plot_all_peak_mass_models,
     _plot_peak_mass_model_and_data,
     _plot_peak_mass_model_and_data_by_season,
 )
