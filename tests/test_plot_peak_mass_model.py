@@ -4,6 +4,8 @@ from petrel_chicks import (
     _plot_peak_mass_model_and_data,
     _plot_peak_mass_model_and_data_by_season,
 )
+from petrel_chicks.plot_peak_mass_model import plot_all_peak_mass_models
+
 import pandas as pd
 import matplotlib as plt
 
@@ -68,6 +70,7 @@ def test_plot_peak_mass_model_and_data():
 
 
 def test_plot_plot_all_peak_mass_models():
+    df = pd.read_csv("tests/data/medidas_morfometricas_con_edades.csv")
     obtained_ax = plot_all_peak_mass_models(df)
     assert obtained_ax.get_children()[0].get_color() == "b"
     assert obtained_ax.get_children()[1].get_color() == "r"
