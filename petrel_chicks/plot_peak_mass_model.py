@@ -6,6 +6,16 @@ from petrel_chicks.fit_model_for_peak_mass import fit_model_mass_vs_age, quadrat
 from petrel_chicks.filter_per_season import add_anio_column
 
 
+def plot_all_peak_mass_models(df):
+    df_with_year = add_anio_column(df)
+    age, predicted_mass = get_fitted_points(df_with_year)
+    _, ax = gp.geci_plot()
+    plt.plot(age, predicted_mass, color="b")
+    plt.plot(age, predicted_mass, color="r")
+    plt.legend(["Season 2013", "season 2015"])
+    return ax
+
+
 def _plot_peak_mass_model_and_data_by_season(df, season):
     df_with_year = add_anio_column(df)
     filtered_data = df_with_year[df_with_year.Anio == season]
