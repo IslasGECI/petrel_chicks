@@ -9,6 +9,8 @@ runner = CliRunner()
 def tests_plot_all_peak_mass_models():
     result = runner.invoke(cli, ["plot-all-peak-mass-models", "--help"])
     assert result.exit_code == 0
+    assert " Input file path " in result.stdout
+    assert " Output file path " in result.stdout
 
 
 def tests_plot():
