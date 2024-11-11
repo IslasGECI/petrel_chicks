@@ -43,14 +43,8 @@ def test_plot_peak_mass_model_and_data():
     obtained_ax = _plot_peak_mass_model_and_data(df)
     assert isinstance(obtained_ax, plt.axes._axes.Axes)
 
-    obtained_y_label = obtained_ax.get_ylabel()
-    expected_y_label = "Mass $\\left( g \\right)$"
-    assert obtained_y_label == expected_y_label
+    assert_the_labes_are_right(obtained_ax)
     assert (obtained_ax.get_children()[0].get_offsets().data[:, 1] == df.Masa).all()
-
-    obtained_y_label = obtained_ax.get_xlabel()
-    expected_y_label = "Chick age $\\left( d \\right)$"
-    assert obtained_y_label == expected_y_label
 
     assert isinstance(obtained_ax.get_children()[1], plt.lines.Line2D)
     assert (
