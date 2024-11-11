@@ -59,7 +59,7 @@ def _plot_peak_mass_model_and_data(df):
 
 def _setup_chicks_mass_vs_age_figure(fontsize: int) -> None:
     plt.ylabel("Mass $\\left( g \\right)$", fontsize=fontsize)
-    plt.xlabel("Chick age $\\left( d \\right)$", fontsize=fontsize)
+    plt.xlabel("Chick age $\\left( days \\right)$", fontsize=fontsize)
     plt.xticks(fontsize=fontsize)
     plt.yticks(fontsize=fontsize)
 
