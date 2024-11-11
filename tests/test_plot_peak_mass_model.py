@@ -70,12 +70,13 @@ def test_plot_peak_mass_model_and_data():
 
 def test_plot_plot_all_peak_mass_models():
     df = pd.read_csv("tests/data/medidas_morfometricas_con_edades.csv")
+    plt.pyplot.clf()
     obtained_ax = plot_all_peak_mass_models(df)
-    plt.savefig("test.png", transparent=True)
+    plt.pyplot.savefig("test.png", transparent=True)
     assert obtained_ax.get_children()[0].get_color() == "b"
     assert obtained_ax.get_children()[1].get_color() == "r"
-    expected_plots = 3
-    assert len(obtained_ax.get_children()) == expected_plots
+    assert isinstance(obtained_ax.get_children()[1], matplotlib.lines.Line2D)
+    assert isinstance(obtained_ax.get_children()[2], matplotlib.lines.Line2D)
     assert obtained_ax.get_legend().get_texts()[0].get_text() == "Season 2013"
     assert obtained_ax.get_legend().get_texts()[1].get_text() == "Season 2015"
 
