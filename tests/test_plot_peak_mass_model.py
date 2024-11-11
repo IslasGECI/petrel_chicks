@@ -67,8 +67,8 @@ def test_plot_plot_all_peak_mass_models():
     plt.pyplot.clf()
     obtained_ax = plot_all_peak_mass_models(df)
     plt.pyplot.savefig("test.png", transparent=True)
-    first_children = 0
-    for nth_children in [0, 1, 2]:
+    children_index_for_each_season = [0, 1, 2]
+    for nth_children in children_index_for_each_season:
         assert_children_is_line_2d(nth_children, obtained_ax)
     assert obtained_ax.get_children()[0].get_data()[0][0] == 27
     assert obtained_ax.get_children()[1].get_data()[0][0] == 26
