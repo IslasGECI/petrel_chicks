@@ -27,6 +27,7 @@ def tests_plot_all_peak_mass_models():
     )
     assert result.exit_code == 0
     assert_exist(output_path)
+    assert_transparent_figure(output_path)
 
 
 def tests_plot():
