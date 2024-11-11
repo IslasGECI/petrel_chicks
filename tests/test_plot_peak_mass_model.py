@@ -88,6 +88,15 @@ def test_plot_plot_all_peak_mass_models():
     assert obtained_y_label == expected_y_label
 
 
+def assert_the_labes_are_right(obtained_ax):
+    obtained_y_label = obtained_ax.get_ylabel()
+    expected_y_label = "Mass $\\left( g \\right)$"
+    assert obtained_y_label == expected_y_label
+    obtained_y_label = obtained_ax.get_xlabel()
+    expected_y_label = "Chick age $\\left( d \\right)$"
+    assert obtained_y_label == expected_y_label
+
+
 def tests_get_fitted_mass():
     _, obtained = get_fitted_points(df)
     assert len(obtained) == 1000
