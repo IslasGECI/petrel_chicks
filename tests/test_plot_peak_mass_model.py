@@ -67,7 +67,8 @@ def test_plot_plot_all_peak_mass_models():
     plt.pyplot.clf()
     obtained_ax = plot_all_peak_mass_models(df)
     plt.pyplot.savefig("test.png", transparent=True)
-    assert isinstance(obtained_ax.get_children()[0], plt.lines.Line2D)
+    first_children = 0
+    assert_children_is_line_2d(first_children, obtained_ax)
     assert isinstance(obtained_ax.get_children()[1], plt.lines.Line2D)
     assert isinstance(obtained_ax.get_children()[2], plt.lines.Line2D)
     assert obtained_ax.get_children()[0].get_data()[0][0] == 27
@@ -75,6 +76,10 @@ def test_plot_plot_all_peak_mass_models():
     assert obtained_ax.get_legend().get_texts()[0].get_text() == "Season 2013"
     assert obtained_ax.get_legend().get_texts()[1].get_text() == "Season 2015"
     assert_the_labes_are_right(obtained_ax)
+
+
+def assert_children_is_line_2d(i_nth: int, obtained_ax):
+    assert isinstance(obtained_ax.get_children()[i_nth], plt.lines.Line2D)
 
 
 def assert_the_labes_are_right(obtained_ax):
