@@ -53,6 +53,10 @@ def tests_plot():
     )
     assert result.exit_code == 0
     assert_exist(output_path)
+    assert_transparent_figure(output_path)
+
+
+def assert_transparent_figure(output_path):
     image = plt.imread(output_path)
     proportion_of_transparent_pixels = len(image[image[:, :, 3] == 0]) / len(
         image[:, :, 3].flatten()
