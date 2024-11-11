@@ -7,6 +7,7 @@ from petrel_chicks.filter_per_season import add_anio_column
 
 
 def plot_all_peak_mass_models(df):
+    fontsize = 20
     df_with_year = add_anio_column(df)
     _, ax = gp.geci_plot()
     all_season = [2013, 2015, 2017]
@@ -14,6 +15,8 @@ def plot_all_peak_mass_models(df):
         filtered_data = df_with_year[df_with_year.Anio == season]
         age, predicted_mass = get_fitted_points(filtered_data)
         plt.plot(age, predicted_mass)
+    plt.ylabel("Mass $\\left( g \\right)$", fontsize=fontsize)
+    plt.xlabel("Chick age $\\left( d \\right)$", fontsize=fontsize)
 
     legends = [f"Season {season}" for season in all_season]
     plt.legend(legends)
