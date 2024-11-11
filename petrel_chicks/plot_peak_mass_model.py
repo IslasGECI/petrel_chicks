@@ -11,7 +11,7 @@ def plot_all_peak_mass_models(df):
     _, ax = gp.geci_plot()
     plotter = _Plotter_model_for_all_seasons(df)
     plotter.plot_model_for_all_seasons()
-    _setup_chicks_mass_vs_age_figure(fontsize)
+    plotter._setup_chicks_mass_vs_age_figure(fontsize)
     plotter._write_season_legends()
     return ax
 
@@ -33,6 +33,9 @@ class _Plotter_model_for_all_seasons:
     @property
     def all_season(self):
         return self.df.Year.unique()
+
+    def _setup_chicks_mass_vs_age_figure(self, fontsize: int) -> None:
+        _setup_chicks_mass_vs_age_figure(fontsize)
 
 
 def _plot_peak_mass_model_and_data_by_season(df, season):
