@@ -17,11 +17,20 @@ def plot_all_peak_mass_models(df):
 
 
 def _plot_model_for_all_seasons(df):
-    all_season = _get_season_data(df)
-    for season in all_season:
-        filtered_data = df[df.Year == season]
-        age, predicted_mass = get_fitted_points(filtered_data)
-        plt.plot(age, predicted_mass)
+    plotter = _Plotter_model_for_all_seasons(df)
+    plotter.plot_model_for_all_seasons()
+
+
+class _Plotter_model_for_all_seasons:
+    def __init__(self, df):
+        self.df = df
+        self.all_season = _get_season_data(df)
+
+    def plot_model_for_all_seasons(self):
+        for season in self.all_season:
+            filtered_data = self.df[self.df.Year == season]
+            age, predicted_mass = get_fitted_points(filtered_data)
+            plt.plot(age, predicted_mass)
 
 
 def _write_season_legends(all_season: list) -> None:
