@@ -76,6 +76,8 @@ def test_plot_plot_all_peak_mass_models():
     assert isinstance(obtained_ax.get_children()[0], plt.lines.Line2D)
     assert isinstance(obtained_ax.get_children()[1], plt.lines.Line2D)
     assert isinstance(obtained_ax.get_children()[2], plt.lines.Line2D)
+    assert obtained_ax.get_children()[0].get_data()[0][0] == 27
+    assert obtained_ax.get_children()[1].get_data()[0][0] == 26
     assert obtained_ax.get_legend().get_texts()[0].get_text() == "Season 2013"
     assert obtained_ax.get_legend().get_texts()[1].get_text() == "Season 2015"
 
