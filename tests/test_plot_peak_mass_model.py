@@ -74,7 +74,7 @@ def test_plot_plot_all_peak_mass_models():
     assert obtained_ax.get_children()[0].get_color() == "b"
     assert obtained_ax.get_children()[1].get_color() == "r"
     assert obtained_ax.get_legend().get_texts()[0].get_text() == "Season 2013"
-    assert obtained_ax.get_legend().get_texts()[1].get_text() == "season 2015"
+    assert obtained_ax.get_legend().get_texts()[1].get_text() == "Season 2015"
 
 
 def tests_get_fitted_mass():
