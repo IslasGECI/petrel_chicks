@@ -86,7 +86,7 @@ def assert_the_labes_are_right(obtained_ax):
     expected_y_label = "Mass $\\left( g \\right)$"
     assert obtained_y_label == expected_y_label
     obtained_y_label = obtained_ax.get_xlabel()
-    expected_y_label = "Chick age $\\left( d \\right)$"
+    expected_y_label = "Chick age $\\left( days \\right)$"
     assert obtained_y_label == expected_y_label
 
 
