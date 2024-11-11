@@ -10,7 +10,7 @@ def plot_all_peak_mass_models(df):
     fontsize = 20
     df_with_year = add_anio_column(df)
     _, ax = gp.geci_plot()
-    all_season = [2013, 2015, 2017]
+    all_season = _get_season_data(df)
     for season in all_season:
         filtered_data = df_with_year[df_with_year.Anio == season]
         age, predicted_mass = get_fitted_points(filtered_data)
@@ -21,6 +21,10 @@ def plot_all_peak_mass_models(df):
     legends = [f"Season {season}" for season in all_season]
     plt.legend(legends)
     return ax
+
+
+def _get_season_data(df):
+    return [2013, 2015, 2017]
 
 
 def _plot_peak_mass_model_and_data_by_season(df, season):
