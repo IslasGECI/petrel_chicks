@@ -80,6 +80,12 @@ def test_plot_plot_all_peak_mass_models():
     assert obtained_ax.get_children()[1].get_data()[0][0] == 26
     assert obtained_ax.get_legend().get_texts()[0].get_text() == "Season 2013"
     assert obtained_ax.get_legend().get_texts()[1].get_text() == "Season 2015"
+    obtained_y_label = obtained_ax.get_ylabel()
+    expected_y_label = "Mass $\\left( g \\right)$"
+    assert obtained_y_label == expected_y_label
+    obtained_y_label = obtained_ax.get_xlabel()
+    expected_y_label = "Chick age $\\left( d \\right)$"
+    assert obtained_y_label == expected_y_label
 
 
 def tests_get_fitted_mass():
