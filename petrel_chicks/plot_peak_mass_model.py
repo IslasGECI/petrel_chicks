@@ -10,8 +10,8 @@ def plot_all_peak_mass_models(df):
     _, ax = gp.geci_plot()
     plotter = _Plotter_model_for_all_seasons(df)
     plotter.plot_model_for_all_seasons()
-    plotter._setup_chicks_mass_vs_age_figure()
-    plotter._write_season_legends()
+    plotter.setup_chicks_mass_vs_age_figure()
+    plotter.write_season_legends()
     return ax
 
 
@@ -26,7 +26,7 @@ class _Plotter_model_for_all_seasons:
             age, predicted_mass = get_fitted_points(filtered_data)
             plt.plot(age, predicted_mass)
 
-    def _write_season_legends(self) -> None:
+    def write_season_legends(self) -> None:
         legends = [f"Season {season}" for season in self.all_season]
         plt.legend(legends)
 
@@ -34,7 +34,7 @@ class _Plotter_model_for_all_seasons:
     def all_season(self):
         return self.df.Year.unique()
 
-    def _setup_chicks_mass_vs_age_figure(self) -> None:
+    def setup_chicks_mass_vs_age_figure(self) -> None:
         _setup_chicks_mass_vs_age_figure(self.fontsize)
 
 
