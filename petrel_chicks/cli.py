@@ -10,6 +10,11 @@ cli = typer.Typer()
 
 
 @cli.command()
+def plot_all_peak_mass_models():
+    pass
+
+
+@cli.command()
 def plot_peak_mass_model(
     data_path: str = typer.Option(help="Input file path"),
     season: int = typer.Option(help="Season"),
