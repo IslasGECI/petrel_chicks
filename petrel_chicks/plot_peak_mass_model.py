@@ -10,9 +10,9 @@ def plot_all_peak_mass_models(df):
     df_with_year = add_anio_column(df)
     age, predicted_mass = get_fitted_points(df_with_year)
     _, ax = gp.geci_plot()
-    plt.plot(age, predicted_mass, color="b")
-    plt.plot(age, predicted_mass, color="r")
-    plt.plot(age, predicted_mass, color="k")
+    plt.plot(age, predicted_mass)
+    plt.plot(age, predicted_mass)
+    plt.plot(age, predicted_mass)
     plt.legend(["Season 2013", "Season 2015"])
     return ax
 
