@@ -13,7 +13,9 @@ def plot_all_peak_mass_models(df):
     all_season = [2013, 2015, 2017]
     for season in all_season:
         plt.plot(age, predicted_mass)
-    plt.legend(["Season 2013", "Season 2015"])
+
+    legends = [f"Season {season}" for season in all_season]
+    plt.legend(legends)
     return ax
 
 
