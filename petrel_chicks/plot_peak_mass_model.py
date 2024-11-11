@@ -15,8 +15,7 @@ def plot_all_peak_mass_models(df):
         filtered_data = df_with_year[df_with_year.Anio == season]
         age, predicted_mass = get_fitted_points(filtered_data)
         plt.plot(age, predicted_mass)
-    plt.ylabel("Mass $\\left( g \\right)$", fontsize=fontsize)
-    plt.xlabel("Chick age $\\left( d \\right)$", fontsize=fontsize)
+    setup_chicks_mass_vs_age_figure(fontsize)
 
     legends = [f"Season {season}" for season in all_season]
     plt.legend(legends)
