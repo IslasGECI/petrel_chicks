@@ -12,6 +12,22 @@ def tests_plot_all_peak_mass_models():
     assert " Input file path " in result.stdout
     assert " Output file path " in result.stdout
 
+    data_path = "tests/data/medidas_morfometricas_con_edades.csv"
+    output_path = "tests/data/all_models.png"
+    if_exist_remove(output_path)
+    result = runner.invoke(
+        cli,
+        [
+            "plot-all-peak-mass-models",
+            "--data-path",
+            data_path,
+            "--output-path",
+            output_path,
+        ],
+    )
+    assert result.exit_code == 0
+    assert_exist(output_path)
+
 
 def tests_plot():
     result = runner.invoke(cli, ["plot-peak-mass-model", "--help"])
