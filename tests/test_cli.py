@@ -6,6 +6,11 @@ from geci_test_tools import assert_exist, if_exist_remove
 runner = CliRunner()
 
 
+def tests_plot_all_peak_mass_models():
+    result = runner.invoke(cli, ["plot-all-peak-mass-models", "--help"])
+    assert result.exit_code == 0
+
+
 def tests_plot():
     result = runner.invoke(cli, ["plot-peak-mass-model", "--help"])
     assert result.exit_code == 0
