@@ -10,10 +10,7 @@ def plot_all_peak_mass_models(df):
     fontsize = 20
     _, ax = gp.geci_plot()
     all_season = _get_season_data(df)
-    for season in all_season:
-        filtered_data = df[df.Year == season]
-        age, predicted_mass = get_fitted_points(filtered_data)
-        plt.plot(age, predicted_mass)
+    plot_model_for_all_seasons(df)
     _setup_chicks_mass_vs_age_figure(fontsize)
     _write_season_legends(all_season)
     return ax
