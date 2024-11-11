@@ -70,7 +70,7 @@ def test_plot_plot_all_peak_mass_models():
     children_index_for_each_season = [0, 1, 2]
     for nth_children in children_index_for_each_season:
         child_nth = obtained_ax.get_children()[nth_children]
-        xxassert_children_is_line_2d(child_nth)
+        assert_children_is_line_2d(child_nth)
     assert obtained_ax.get_children()[0].get_data()[0][0] == 27
     assert obtained_ax.get_children()[1].get_data()[0][0] == 26
     assert obtained_ax.get_legend().get_texts()[0].get_text() == "Season 2013"
@@ -78,12 +78,7 @@ def test_plot_plot_all_peak_mass_models():
     assert_the_labes_are_right(obtained_ax)
 
 
-def assert_children_is_line_2d(i_nth: int, obtained_ax):
-    children_nth = obtained_ax.get_children()[i_nth]
-    xxassert_children_is_line_2d(children_nth)
-
-
-def xxassert_children_is_line_2d(children):
+def assert_children_is_line_2d(children):
     assert isinstance(children, plt.lines.Line2D)
 
 
