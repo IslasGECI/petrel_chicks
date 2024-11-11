@@ -21,6 +21,11 @@ def plot_all_peak_mass_models(df):
     return ax
 
 
+def write_season_legends(all_season: list) -> None:
+    legends = [f"Season {season}" for season in all_season]
+    plt.legend(legends)
+
+
 def _get_season_data(df_with_year):
     return df_with_year.Year.unique()
 
