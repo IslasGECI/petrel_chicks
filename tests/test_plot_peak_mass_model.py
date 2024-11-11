@@ -46,7 +46,7 @@ def test_plot_peak_mass_model_and_data():
     assert_the_labes_are_right(obtained_ax)
     assert (obtained_ax.get_children()[0].get_offsets().data[:, 1] == df.Masa).all()
 
-    assert isinstance(obtained_ax.get_children()[1], plt.lines.Line2D)
+    assert_children_is_line_2d(obtained_ax.get_children()[1])
     assert (
         obtained_ax.get_children()[1].get_data()[0][0]
         < obtained_ax.get_children()[1].get_data()[0][-1]
@@ -64,7 +64,6 @@ def test_plot_peak_mass_model_and_data():
 
 def test_plot_plot_all_peak_mass_models():
     df = pd.read_csv("tests/data/medidas_morfometricas_con_edades.csv")
-    plt.pyplot.clf()
     obtained_ax = plot_all_peak_mass_models(df)
     plt.pyplot.savefig("test.png", transparent=True)
     children_index_for_each_season = [0, 1, 2]
