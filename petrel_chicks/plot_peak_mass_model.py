@@ -41,10 +41,7 @@ def _plot_peak_mass_model_and_data(df):
     age, predicted_mass = get_fitted_points(df)
 
     plt.plot(age, predicted_mass, color="r")
-    plt.ylabel("Mass $\\left( g \\right)$", fontsize=fontsize)
-    plt.xlabel("Chick age $\\left( d \\right)$", fontsize=fontsize)
-    plt.xticks(fontsize=fontsize)
-    plt.yticks(fontsize=fontsize)
+    setup_chicks_mass_vs_age_figure(fontsize)
     plt.legend(["Measured bird mass", "Fitted model"])
     return ax
 
