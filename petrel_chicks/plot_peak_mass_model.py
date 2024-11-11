@@ -10,7 +10,7 @@ def plot_all_peak_mass_models(df):
     fontsize = 20
     df_with_year = add_anio_column(df)
     _, ax = gp.geci_plot()
-    all_season = _get_season_data(df)
+    all_season = _get_season_data(df_with_year)
     for season in all_season:
         filtered_data = df_with_year[df_with_year.Anio == season]
         age, predicted_mass = get_fitted_points(filtered_data)
@@ -23,8 +23,8 @@ def plot_all_peak_mass_models(df):
     return ax
 
 
-def _get_season_data(df):
-    return [2013, 2015, 2017]
+def _get_season_data(df_with_year):
+    return df_with_year.Anio.unique()
 
 
 def _plot_peak_mass_model_and_data_by_season(df, season):
@@ -47,6 +47,13 @@ def _plot_peak_mass_model_and_data(df):
     plt.yticks(fontsize=fontsize)
     plt.legend(["Measured bird mass", "Fitted model"])
     return ax
+
+
+def setup_chicks_mass_vs_age_figure(fontsize: int) -> None:
+    plt.ylabel("Mass $\\left( g \\right)$", fontsize=fontsize)
+    plt.xlabel("Chick age $\\left( d \\right)$", fontsize=fontsize)
+    plt.xticks(fontsize=fontsize)
+    plt.yticks(fontsize=fontsize)
 
 
 def get_fitted_mass(df, age):
