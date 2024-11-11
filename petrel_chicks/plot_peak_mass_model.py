@@ -12,6 +12,7 @@ def plot_all_peak_mass_models(df):
     _, ax = gp.geci_plot()
     plt.plot(age, predicted_mass, color="b")
     plt.plot(age, predicted_mass, color="r")
+    plt.plot(age, predicted_mass, color="k")
     plt.legend(["Season 2013", "Season 2015"])
     return ax
 
