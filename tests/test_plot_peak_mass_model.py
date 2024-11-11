@@ -78,7 +78,12 @@ def test_plot_plot_all_peak_mass_models():
 
 
 def assert_children_is_line_2d(i_nth: int, obtained_ax):
-    assert isinstance(obtained_ax.get_children()[i_nth], plt.lines.Line2D)
+    children_nth = obtained_ax.get_children()[i_nth]
+    xxassert_children_is_line_2d(children_nth)
+
+
+def xxassert_children_is_line_2d(children):
+    assert isinstance(children, plt.lines.Line2D)
 
 
 def assert_the_labes_are_right(obtained_ax):
