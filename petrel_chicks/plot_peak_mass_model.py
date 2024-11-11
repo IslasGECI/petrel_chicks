@@ -9,7 +9,6 @@ from petrel_chicks.filter_per_season import add_anio_column
 def plot_all_peak_mass_models(df):
     fontsize = 20
     _, ax = gp.geci_plot()
-    all_season = _get_season_data(df)
     plotter = _Plotter_model_for_all_seasons(df)
     plotter.plot_model_for_all_seasons()
     _setup_chicks_mass_vs_age_figure(fontsize)
@@ -20,7 +19,6 @@ def plot_all_peak_mass_models(df):
 class _Plotter_model_for_all_seasons:
     def __init__(self, df):
         self.df = df
-        self.all_season = _get_season_data(df)
 
     def plot_model_for_all_seasons(self):
         for season in self.all_season:
@@ -32,9 +30,9 @@ class _Plotter_model_for_all_seasons:
         legends = [f"Season {season}" for season in self.all_season]
         plt.legend(legends)
 
-
-def _get_season_data(df_with_year):
-    return df_with_year.Year.unique()
+    @property
+    def all_season(self):
+        return self.df.Year.unique()
 
 
 def _plot_peak_mass_model_and_data_by_season(df, season):
