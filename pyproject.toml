@@ -12,7 +12,7 @@ module = "petrel_chicks"
 requires = [
     "geci-plots==0.4.1",
     "lmfit",
-    "mean_differences_mc @ git+https://github.com/IslasGECI/mean_differences_mc.git",
+    "mean-differences-mc",
     "numpy==1.26.4",
     "pandasql",
     "scikit-learn==1.1.3",
