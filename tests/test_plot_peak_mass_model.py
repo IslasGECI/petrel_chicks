@@ -69,7 +69,8 @@ def test_plot_plot_all_peak_mass_models():
     plt.pyplot.savefig("test.png", transparent=True)
     children_index_for_each_season = [0, 1, 2]
     for nth_children in children_index_for_each_season:
-        assert_children_is_line_2d(nth_children, obtained_ax)
+        child_nth = obtained_ax.get_children()[nth_children]
+        xxassert_children_is_line_2d(child_nth)
     assert obtained_ax.get_children()[0].get_data()[0][0] == 27
     assert obtained_ax.get_children()[1].get_data()[0][0] == 26
     assert obtained_ax.get_legend().get_texts()[0].get_text() == "Season 2013"
