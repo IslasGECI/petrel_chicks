@@ -8,7 +8,7 @@ def find_age_for_max_mass_from_data(age_mass_data):
 
 
 def find_age_for_max_mass(parameters):
-    return int(-parameters[1] / (2 * parameters[0]))
+    return round(-parameters[1] / (2 * parameters[0]))
 
 
 def fit_model_mass_vs_age(ages_and_mass):
