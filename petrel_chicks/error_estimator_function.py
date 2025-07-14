@@ -72,6 +72,7 @@ def plot_morphometric_data(ax, df, morphometric_variable):
         df[morphometric_variable],
         "-o",
     )
+    return ax
 
 
 def set_ticks_and_limits(ax, df, morphometric_variable):
@@ -82,6 +83,7 @@ def set_ticks_and_limits(ax, df, morphometric_variable):
     plt.yticks(rounded_ticks)
     ax.tick_params(axis="y", labelsize=20, labelrotation=90)
     ax.tick_params(axis="x", labelsize=20)
+    return ax
 
 
 def set_axis_labels(ax, morphometric_variable):

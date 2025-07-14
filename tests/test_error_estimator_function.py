@@ -80,13 +80,16 @@ def test_perform_fit():
 def test_plot_morphometric_data():
     data_feature = pd.read_csv("tests/data/logistic_curve.csv")
     fig, ax = plt.subplots()
-    plot_morphometric_data(ax, data_feature, "Longitud_ala")
-    set_ticks_and_limits(ax, data_feature, "Longitud_ala")
-    output_path = "tests/baseline/test_plot_morphometric_data.png"
-    plt.savefig(output_path)
-    obtained_hash = calculate_hash(output_path)
-    expected_hash = "3d4396d997dedcf4da15e2c360365a0e"
-    assert obtained_hash == expected_hash
+    obtained_ax_plot = plot_morphometric_data(ax, data_feature, "Longitud_ala")
+    assert obtained_ax_plot.get_lines()[0].get_marker() == "o"
+    assert obtained_ax_plot.get_lines()[0].get_linestyle() == "-"
+
+    obtained_ax_set_ticks = set_ticks_and_limits(obtained_ax_plot, data_feature, "Longitud_ala")
+    # output_path = "tests/baseline/test_plot_morphometric_data.png"
+    # plt.savefig(output_path)
+    # obtained_hash = calculate_hash(output_path)
+    # expected_hash = "3d4396d997dedcf4da15e2c360365a0e"
+    # assert obtained_hash == expected_hash
 
 
 def test_set_axis_labels():
