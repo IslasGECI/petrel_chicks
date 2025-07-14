@@ -28,7 +28,7 @@ class _Plotter_model_for_all_seasons:
 
     def write_season_legends(self) -> None:
         legends = [f"Season {season}" for season in self.all_season]
-        plt.legend(legends)
+        plt.legend(legends, fontsize=18)
 
     @property
     def all_season(self):
