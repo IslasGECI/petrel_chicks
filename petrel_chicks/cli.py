@@ -19,7 +19,7 @@ def plot_all_peak_mass_models(
 ):
     df = pd.read_csv(data_path)
     _plot_all_peak_mass_models(df)
-    plt.savefig(output_path, transparent=True)
+    plt.savefig(output_path, transparent=True, dpi=600)
 
 
 @cli.command()
