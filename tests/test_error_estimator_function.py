@@ -85,11 +85,15 @@ def test_plot_morphometric_data():
     assert obtained_ax_plot.get_lines()[0].get_linestyle() == "-"
 
     obtained_ax_set_ticks = set_ticks_and_limits(obtained_ax_plot, data_feature, "Longitud_ala")
-    # output_path = "tests/baseline/test_plot_morphometric_data.png"
-    # plt.savefig(output_path)
-    # obtained_hash = calculate_hash(output_path)
-    # expected_hash = "3d4396d997dedcf4da15e2c360365a0e"
-    # assert obtained_hash == expected_hash
+
+    assert obtained_ax_set_ticks.get_xlim() == (0.0, 80.0)
+    assert obtained_ax_set_ticks.get_ylim() == (0.0, 10.0)
+
+    assert obtained_ax_set_ticks.get_xticklabels()[0].get_rotation() == 0.0
+    assert obtained_ax_set_ticks.get_yticklabels()[0].get_rotation() == 90.0
+
+    assert obtained_ax_set_ticks.get_xticklabels()[0].get_fontsize() == 20.0
+    assert obtained_ax_set_ticks.get_yticklabels()[0].get_fontsize() == 20.0
 
 
 def test_set_axis_labels():
