@@ -10,12 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Fixed
-- Set the figure dpi to 600 in the command `plot-all-peak-mass-models`
-- Set the figure label font size to 18 in the command `plot-all-peak-mass-models`
 
 ### Changed
 
 ### Removed
+
+## [0.4.2] - 2025-07-14
+### Fixed
+- Set the figure dpi to 600 in the command `plot-all-peak-mass-models`
+- Set the figure label font size to 18 in the command `plot-all-peak-mass-models`
 
 ## [0.4.1] - 2024-11-11
 ### Changed
