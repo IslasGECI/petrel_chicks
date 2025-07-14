@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Fixed
+- Set the figure dpi to 600 in the command `plot-all-peak-mass-models`
 
 ### Changed
 
