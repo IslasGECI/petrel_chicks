@@ -77,12 +77,13 @@ def plot_morphometric_data(ax, df, morphometric_variable):
 
 def set_ticks_and_limits(ax, df, morphometric_variable):
     upper_limit = roundup(np.max(df[morphometric_variable]), 10)
-    plt.xlim(0, 80)
-    plt.ylim(0, upper_limit)
     rounded_ticks = rounded_ticks_array(upper_limit, 0)
+    plt.xlim(0, 80)
+    plt.ylim(rounded_ticks)
     plt.yticks(rounded_ticks)
-    ax.tick_params(axis="y", labelsize=20, labelrotation=90)
-    ax.tick_params(axis="x", labelsize=20)
+    labelsize = 20
+    ax.tick_params(axis="y", labelsize=labelsize, labelrotation=90)
+    ax.tick_params(axis="x", labelsize=labelsize)
     return ax
 
 
