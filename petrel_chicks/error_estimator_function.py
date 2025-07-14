@@ -26,12 +26,10 @@ def inverse_logistic_model(L, A, t0, k, n):
     return t
 
 
-initial_value = 1
-minimum_value = 0
-
-
 def initialize_logistic_model():
     model = Model(logistic_model)
+    initial_value = 1
+    minimum_value = 0
     model.set_param_hint("A", value=initial_value, min=minimum_value)
     model.set_param_hint("t0", value=initial_value, min=minimum_value)
     model.set_param_hint("k", value=initial_value, min=minimum_value)
@@ -88,8 +86,14 @@ def set_ticks_and_limits(ax, df, morphometric_variable):
 
 
 def set_axis_labels(ax, morphometric_variable):
+    fontsize = 25
+    labelpad = 10
     if morphometric_variable == "Masa":
-        ax.set_ylabel(f'{morphometric_variable.replace("_"," ")} (g)', fontsize=25, labelpad=10)
+        ax.set_ylabel(
+            f'{morphometric_variable.replace("_"," ")} (g)', fontsize=fontsize, labelpad=labelpad
+        )
     else:
-        ax.set_ylabel(f'{morphometric_variable.replace("_"," ")} (mm)', fontsize=25, labelpad=10)
-    ax.set_xlabel("Días desde la eclosión", fontsize=25, labelpad=10)
+        ax.set_ylabel(
+            f'{morphometric_variable.replace("_"," ")} (mm)', fontsize=fontsize, labelpad=labelpad
+        )
+    ax.set_xlabel("Días desde la eclosión", fontsize=fontsize, labelpad=labelpad)
