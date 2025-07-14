@@ -54,6 +54,13 @@ def test_initialize_logistic_model():
     expected_model_name = "Model(logistic_model)"
     expected_initial_values = [1, 1, 1, 1]
     obteined_model, obtained_params = initialize_logistic_model()
+    expected_min_value = 0
+    assert all(
+        [
+            obteined_model.param_hints[key]["min"] == expected_min_value
+            for key in obteined_model.param_hints.keys()
+        ]
+    )
     assert expected_params_names == obteined_model.param_names
     assert expected_model_name == obteined_model.name
     assert expected_initial_values == list(obtained_params.valuesdict().values())
