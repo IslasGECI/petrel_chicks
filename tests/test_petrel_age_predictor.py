@@ -110,13 +110,25 @@ def test_Plotter(mocker):
     Parameters = mocker.Mock(spec=Predictions_and_Parameters)
     Parameters.data_for_plot.return_value = [1, 2, 3], [1, 2, 3]
     Plotter_parameters = Plotter(Parameters)
-    Plotter_parameters.plot()
-    output_path = "reports/figures/figura.png"
-    Plotter_parameters.savefig(output_path)
-    file_content = open(output_path, "rb").read()
-    obtained_hash = hashlib.md5(file_content).hexdigest()
-    expected_hash = "70d1531f961099d51161212cd8b74118"
-    assert obtained_hash == expected_hash
+    obtained_ax = Plotter_parameters.plot()
+
+    assert obtained_ax.get_lines()[0].get_marker() == "o"
+
+    obtained_y_label = obtained_ax.get_ylabel()
+    expected_y_label = "Error (días)"
+    assert obtained_y_label == expected_y_label
+    obtained_y_label = obtained_ax.get_xlabel()
+    expected_y_label = "Edad (días)"
+    assert obtained_y_label == expected_y_label
+
+    assert obtained_ax.get_xticklabels()[0].get_fontsize() == 25.0
+    assert obtained_ax.get_yticklabels()[0].get_fontsize() == 25.0
+
+    assert obtained_ax.get_xticklabels()[0].get_rotation() == 0.0
+    assert obtained_ax.get_yticklabels()[0].get_rotation() == 90.0
+
+    assert obtained_ax.get_xlim() == (0.0, 100.0)
+    assert obtained_ax.get_ylim() == (0.0, 14.0)
 
 
 def test_Plotter_(mocker):

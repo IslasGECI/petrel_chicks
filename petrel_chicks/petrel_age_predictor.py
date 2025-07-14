@@ -120,22 +120,22 @@ class Plotter:
         self.ages, self.prediction_days_diff = Predictions_and_Parameters.data_for_plot()
         self.fig, self.ax = geci_plot()
         self.exit_files_folder = "reports/figures"
+        self.fontsize = 25
 
     def plot(self):
         self.ax.plot(self.ages, self.prediction_days_diff, "o")
         self.set_labels()
         self.set_ticks()
         self.set_limits()
+        return self.ax
 
     def set_labels(self):
-        fontsize = 25
-        self.ax.set_ylabel("Error (días)", fontsize=fontsize)
-        self.ax.set_xlabel("Edad (días)", fontsize=fontsize)
+        self.ax.set_ylabel("Error (días)", fontsize=self.fontsize)
+        self.ax.set_xlabel("Edad (días)", fontsize=self.fontsize)
 
     def set_ticks(self):
-        fontsize = 25
-        self.ax.tick_params(axis="y", labelsize=fontsize, labelrotation=90)
-        self.ax.tick_params(axis="x", labelsize=fontsize)
+        self.ax.tick_params(axis="y", labelsize=self.fontsize, labelrotation=90)
+        self.ax.tick_params(axis="x", labelsize=self.fontsize)
         self.ax.ticklabel_format(axis="y", style="sci")
 
     def set_limits(self):
