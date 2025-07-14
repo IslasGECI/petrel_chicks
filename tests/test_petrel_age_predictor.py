@@ -1,4 +1,3 @@
-import hashlib
 from petrel_chicks import (
     bfill_empty_age,
     Cleaner_Morphometric,

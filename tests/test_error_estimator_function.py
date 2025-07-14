@@ -11,7 +11,6 @@ from petrel_chicks import (
 )
 from geci_plots import geci_plot
 
-from geci_test_tools import calculate_hash
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
