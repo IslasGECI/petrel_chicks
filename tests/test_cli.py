@@ -1,3 +1,4 @@
+from PIL import Image
 from petrel_chicks import cli
 from typer.testing import CliRunner
 import matplotlib.pyplot as plt
@@ -28,6 +29,23 @@ def tests_plot_all_peak_mass_models():
     assert result.exit_code == 0
     assert_exist(output_path)
     assert_transparent_figure(output_path)
+
+    dpi = get_eps_resolution(output_path)
+
+    assert isinstance(dpi, tuple)
+    assert len(dpi) == 2
+    assert all(isinstance(x, (int, float)) for x in dpi)
+
+    assert dpi[0] > 599 and dpi[1] > 599
+
+
+def get_eps_resolution(eps_path):
+    try:
+        with Image.open(eps_path) as img:
+            dpi = img.info.get("dpi", (72, 72))
+            return dpi
+    except Exception as e:
+        raise ValueError(f"No se pudo leer la resolución del archivo EPS: {e}")
 
 
 def tests_plot():
