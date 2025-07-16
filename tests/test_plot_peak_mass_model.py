@@ -64,7 +64,8 @@ def test_plot_peak_mass_model_and_data():
 
 def test_plot_plot_all_peak_mass_models():
     df = pd.read_csv("tests/data/medidas_morfometricas_con_edades.csv")
-    obtained_ax = _plot_all_peak_mass_models(df)
+    font_family = "DejaVu Sans"
+    obtained_ax = _plot_all_peak_mass_models(df, font_family)
     plt.pyplot.savefig("test.png", transparent=True)
     children_index_for_each_season = [0, 1, 2]
     for nth_children in children_index_for_each_season:
@@ -78,6 +79,7 @@ def test_plot_plot_all_peak_mass_models():
     assert obtained_ax.get_xticklabels()[0].get_fontsize() == 20.0
     assert obtained_ax.get_yticklabels()[0].get_fontsize() == 20.0
     assert_the_labes_are_right(obtained_ax)
+    assert obtained_ax.get_xticklabels()[0].get_name() == font_family
 
 
 def assert_children_is_line_2d(children):
