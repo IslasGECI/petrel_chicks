@@ -22,6 +22,8 @@ def tests_plot_all_peak_mass_models():
             "plot-all-peak-mass-models",
             "--data-path",
             data_path,
+            "--font-name",
+            "DejaVu Sans",
             "--output-path",
             output_path,
         ],
