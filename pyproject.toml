@@ -10,7 +10,7 @@ description-file = "README.md"
 home-page = "https://github.com/IslasGECI/petrel_chicks"
 module = "petrel_chicks"
 requires = [
-    "geci-plots==0.4.1",
+    "geci-plots==0.*",
     "lmfit",
     "mean-differences-mc",
     "numpy==1.26.4",
