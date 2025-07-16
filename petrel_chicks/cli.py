@@ -15,10 +15,11 @@ cli = typer.Typer()
 @cli.command()
 def plot_all_peak_mass_models(
     data_path: str = typer.Option(help="Input file path"),
+    font_name: str = typer.Option("STIXGeneral"),
     output_path: str = typer.Option(help="Output file path"),
 ):
     df = pd.read_csv(data_path)
-    _plot_all_peak_mass_models(df, font_family="DejaVu Sans")
+    _plot_all_peak_mass_models(df, font_family=font_name)
     plt.savefig(output_path, transparent=True, dpi=600)
 
 
