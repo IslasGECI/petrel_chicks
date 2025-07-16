@@ -18,7 +18,7 @@ def plot_all_peak_mass_models(
     output_path: str = typer.Option(help="Output file path"),
 ):
     df = pd.read_csv(data_path)
-    _plot_all_peak_mass_models(df)
+    _plot_all_peak_mass_models(df, font_family="DejaVu Sans")
     plt.savefig(output_path, transparent=True, dpi=600)
 
 

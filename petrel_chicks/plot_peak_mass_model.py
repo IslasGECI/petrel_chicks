@@ -1,13 +1,14 @@
 import geci_plots as gp
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib import font_manager as fm
 
 from petrel_chicks.fit_model_for_peak_mass import fit_model_mass_vs_age, quadratic_function
 from petrel_chicks.filter_per_season import add_anio_column
 
 
-def _plot_all_peak_mass_models(df):
-    _, ax = gp.geci_plot()
+def _plot_all_peak_mass_models(df, font_family):
+    _, ax = gp.geci_plot(font_family=font_family)
     plotter = _Plotter_model_for_all_seasons(df)
     plotter.plot_model_for_all_seasons()
     plotter.setup_chicks_mass_vs_age_figure()
@@ -27,8 +28,9 @@ class _Plotter_model_for_all_seasons:
             plt.plot(age, predicted_mass)
 
     def write_season_legends(self) -> None:
+        font = fm.FontProperties(family="DejaVu Sans", size=18)
         legends = [f"Season {season}" for season in self.all_season]
-        plt.legend(legends, fontsize=18)
+        plt.legend(legends, prop=font)
 
     @property
     def all_season(self):
