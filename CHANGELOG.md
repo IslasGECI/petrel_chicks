@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- The command `plot-all-peak-mass-models` now recieves the font family name as argument.
 
 ### Fixed
 
