@@ -76,6 +76,7 @@ def test_plot_plot_all_peak_mass_models():
     assert obtained_ax.get_legend().get_texts()[0].get_text() == "Season 2013"
     assert obtained_ax.get_legend().get_texts()[1].get_text() == "Season 2015"
     assert obtained_ax.get_legend().get_texts()[0].get_fontsize() == 18
+    assert obtained_ax.get_legend().get_texts()[0].get_fontname() == font_family
     assert obtained_ax.get_xticklabels()[0].get_fontsize() == 20.0
     assert obtained_ax.get_yticklabels()[0].get_fontsize() == 20.0
     assert_the_labes_are_right(obtained_ax)
