@@ -81,12 +81,17 @@ jobs:
     - name: Copia repositorio
       uses: actions/checkout@main
     - name: Evalúa resistencia a mutaciones
-      run: docker run --volumne $PWD:/workdir islasgeci/petrel_chicks:latest make mutants
+      run: docker run --volume $PWD:/workdir islasgeci/petrel_chicks:latest make mutants
     - name: Upload
       uses: actions/upload-artifact@main
       with:
         name: mutant registry
         path: html
+    - name: Fail if file 'registry' exists
+      if: ${{ success() }}
+      run: |
+        echo "❌ Mutants failing. Check file mutants registry exists."
+        exit 1
       
   build-n-publish:
     name: Build and publish Python 🐍 distributions 📦 to PyPI
