@@ -77,7 +77,7 @@ def set_ticks_and_limits(ax, df, morphometric_variable):
     upper_limit = roundup(np.max(df[morphometric_variable]), 10)
     rounded_ticks = rounded_ticks_array(upper_limit, 0)
     plt.xlim(0, 80)
-    rounded_ticks_ylimits = rounded_ticks[0:-1]
+    rounded_ticks_ylimits = rounded_ticks[[0, -1]]
     plt.ylim(rounded_ticks_ylimits)
     plt.yticks(rounded_ticks)
     labelsize = 20
