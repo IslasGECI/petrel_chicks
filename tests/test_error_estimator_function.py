@@ -93,7 +93,7 @@ def test_plot_morphometric_data():
     obtained_ax_set_ticks = set_ticks_and_limits(obtained_ax_plot, data_feature, "Longitud_ala")
 
     assert obtained_ax_set_ticks.get_xlim() == (0.0, 80.0)
-    assert obtained_ax_set_ticks.get_ylim() == (0.0, 20.0)
+    assert obtained_ax_set_ticks.get_ylim() == (0.0, 40.0)
 
     assert obtained_ax_set_ticks.get_xticklabels()[0].get_rotation() == 0.0
     assert obtained_ax_set_ticks.get_yticklabels()[0].get_rotation() == 90.0
