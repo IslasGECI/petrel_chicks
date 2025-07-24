@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.5.1] - 2025-07-24
+### Fixed
+- Function `set_ticks_and_limits()` set the y limits only with first and last rounded values.
+
 ## [0.5.0] - 2025-07-17
 
 ### Added
