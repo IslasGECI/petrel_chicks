@@ -81,7 +81,12 @@ jobs:
     - name: Copia repositorio
       uses: actions/checkout@main
     - name: Evalúa resistencia a mutaciones
-      run: docker run islasgeci/petrel_chicks:latest make mutants
+      run: docker run --volumne $PWD:/workdir islasgeci/petrel_chicks:latest make mutants
+    - name: Upload
+      uses: actions/upload-artifact@main
+      with:
+        name: mutant registry
+        path: html
       
   build-n-publish:
     name: Build and publish Python 🐍 distributions 📦 to PyPI
