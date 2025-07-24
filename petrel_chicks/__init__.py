@@ -1,6 +1,6 @@
 "A module to petrel_chicks"
 
-__version__ = "0.5.1"
+__version__ = "0.5.2"
 from .cli import *  # noqa
 from .calculate_mass_loss_rates import *  # noqa
 from .error_estimator_function import *  # noqa
