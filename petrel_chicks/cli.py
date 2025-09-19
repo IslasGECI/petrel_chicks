@@ -17,9 +17,12 @@ def plot_all_peak_mass_models(
     data_path: str = typer.Option(help="Input file path"),
     font_name: str = typer.Option("STIXGeneral"),
     output_path: str = typer.Option(help="Output file path"),
+    age_at_peak_mass_label: bool = typer.Option(False, help="Show age at peak mass label"),
 ):
     df = pd.read_csv(data_path)
-    _plot_all_peak_mass_models(df, font_family=font_name)
+    _plot_all_peak_mass_models(
+        df, font_family=font_name, show_age_at_peak_mass=age_at_peak_mass_label
+    )
     plt.savefig(output_path, transparent=True, dpi=600)
 
 

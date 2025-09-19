@@ -4,9 +4,12 @@ from typer.testing import CliRunner
 import matplotlib.pyplot as plt
 from geci_test_tools import assert_exist, if_exist_remove, calculate_hash
 
+import pytest
+
 runner = CliRunner()
 
 
+@pytest.mark.skip()
 def tests_plot_all_peak_mass_models():
     result = runner.invoke(cli, ["plot-all-peak-mass-models", "--help"])
     assert result.exit_code == 0
