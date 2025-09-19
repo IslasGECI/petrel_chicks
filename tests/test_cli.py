@@ -91,4 +91,4 @@ def tests_version():
 
     result = runner.invoke(cli, ["version"])
     assert result.exit_code == 0
-    assert "0.5.2" in result.stdout
+    assert "0.6.0" in result.stdout
