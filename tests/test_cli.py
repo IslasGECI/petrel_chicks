@@ -54,8 +54,7 @@ def tests_plot_all_peak_mass_models():
         ],
     )
     assert result.exit_code == 0
-    assert calculate_hash(output_path) != calculate_hash(
-        output_path_with_age_label)
+    assert calculate_hash(output_path) != calculate_hash(output_path_with_age_label)
     if_exist_remove(output_path)
     if_exist_remove(output_path_with_age_label)
 
