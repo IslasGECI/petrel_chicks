@@ -4,12 +4,9 @@ from typer.testing import CliRunner
 import matplotlib.pyplot as plt
 from geci_test_tools import assert_exist, if_exist_remove, calculate_hash
 
-import pytest
-
 runner = CliRunner()
 
 
-@pytest.mark.skip()
 def tests_plot_all_peak_mass_models():
     result = runner.invoke(cli, ["plot-all-peak-mass-models", "--help"])
     assert result.exit_code == 0
@@ -52,12 +49,14 @@ def tests_plot_all_peak_mass_models():
             "--font-name",
             "DejaVu Sans",
             "--output-path",
-            output_path,
+            output_path_with_age_label,
             "--age-at-peak-mass-label",
         ],
     )
     assert result.exit_code == 0
     assert calculate_hash(output_path) != calculate_hash(output_path_with_age_label)
+    if_exist_remove(output_path)
+    if_exist_remove(output_path_with_age_label)
 
 
 def get_eps_resolution(eps_path):
