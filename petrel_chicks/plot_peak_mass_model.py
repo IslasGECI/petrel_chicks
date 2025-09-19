@@ -23,9 +23,9 @@ class _Plotter_model_for_all_seasons:
         self.font_family = font_family
         self.show_age_at_peak_mass = show_age_at_peak_mass
 
-    def age_label(self, age):
+    def age_label(self, age, mass):
         if self.show_age_at_peak_mass:
-            return f"Age at peak mass {int(age)} days"
+            return f"Age {int(age)} days, peak mass {mass:.1f}"
 
     def plot_model_for_all_seasons(self):
         for season in self.all_season:
@@ -37,7 +37,7 @@ class _Plotter_model_for_all_seasons:
             plt.scatter(
                 age[max_index],
                 predicted_mass[max_index],
-                label=self.age_label(age[max_index]),
+                label=self.age_label(age[max_index], predicted_mass[max_index]),
             )
 
     def write_season_legends(self) -> None:
