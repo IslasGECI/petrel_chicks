@@ -78,7 +78,6 @@ def test_plot_plot_all_peak_mass_models():
     assert obtained_ax.get_children()[0].get_data()[0][0] == 27
     assert obtained_ax.get_children()[2].get_data()[0][0] == 26
     assert obtained_ax.get_legend().get_texts()[0].get_text() == "Season 2013"
-    assert obtained_ax.get_legend().get_texts()[1].get_text() == "Age at peak mass 38 days"
     assert obtained_ax.get_legend().get_texts()[2].get_text() == "Season 2015"
     assert obtained_ax.get_legend().get_texts()[0].get_fontsize() == 18
     assert obtained_ax.get_legend().get_texts()[0].get_fontname() == font_family
@@ -86,6 +85,9 @@ def test_plot_plot_all_peak_mass_models():
     assert obtained_ax.get_yticklabels()[0].get_fontsize() == 20.0
     assert_the_labes_are_right(obtained_ax)
     assert obtained_ax.get_xticklabels()[0].get_name() == font_family
+
+    obtained_ax = _plot_all_peak_mass_models(df, font_family, False)
+    assert obtained_ax.get_legend().get_texts()[1].get_text() == "Season 2015"
 
 
 def assert_children_is_line_2d(children):
