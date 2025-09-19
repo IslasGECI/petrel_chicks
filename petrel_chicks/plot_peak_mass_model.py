@@ -29,7 +29,11 @@ class _Plotter_model_for_all_seasons:
             (line,) = plt.plot(age, predicted_mass)
             line.set_label(f"Season {season}")
             max_index = np.argmax(predicted_mass)
-            plt.scatter(age[max_index], predicted_mass[max_index])
+            plt.scatter(
+                age[max_index],
+                predicted_mass[max_index],
+                label=f"Age at peak mass {int(age[max_index])} days",
+            )
 
     def write_season_legends(self) -> None:
         font = fm.FontProperties(family=self.font_family, size=18)
