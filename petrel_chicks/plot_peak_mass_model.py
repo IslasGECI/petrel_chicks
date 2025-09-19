@@ -7,9 +7,9 @@ from petrel_chicks.fit_model_for_peak_mass import fit_model_mass_vs_age, quadrat
 from petrel_chicks.filter_per_season import add_anio_column
 
 
-def _plot_all_peak_mass_models(df, font_family):
+def _plot_all_peak_mass_models(df, font_family, show_age_at_peak_mass=True):
     _, ax = gp.geci_plot(font_family=font_family)
-    plotter = _Plotter_model_for_all_seasons(df, font_family)
+    plotter = _Plotter_model_for_all_seasons(df, font_family, show_age_at_peak_mass)
     plotter.plot_model_for_all_seasons()
     plotter.setup_chicks_mass_vs_age_figure()
     plotter.write_season_legends()
