@@ -17,10 +17,15 @@ def _plot_all_peak_mass_models(df, font_family):
 
 
 class _Plotter_model_for_all_seasons:
-    def __init__(self, df, font_family):
+    def __init__(self, df, font_family, show_age_at_peak_mass=True):
         self.df = df
         self.fontsize = 20
         self.font_family = font_family
+        self.show_age_at_peak_mass = show_age_at_peak_mass
+
+    def age_label(self, age):
+        if self.show_age_at_peak_mass:
+            return f"Age at peak mass {int(age)} days"
 
     def plot_model_for_all_seasons(self):
         for season in self.all_season:
@@ -32,7 +37,7 @@ class _Plotter_model_for_all_seasons:
             plt.scatter(
                 age[max_index],
                 predicted_mass[max_index],
-                label=f"Age at peak mass {int(age[max_index])} days",
+                label=self.age_label(age[max_index]),
             )
 
     def write_season_legends(self) -> None:
