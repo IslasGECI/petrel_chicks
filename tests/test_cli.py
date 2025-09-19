@@ -39,7 +39,7 @@ def tests_plot_all_peak_mass_models():
     assert all(isinstance(x, (int, float)) for x in dpi)
 
     assert dpi[0] > 599 and dpi[1] > 599
-    output_path_without_age_label = "tests/data/all_models.png"
+    output_path_with_age_label = "tests/data/all_models.png"
     result = runner.invoke(
         cli,
         [
@@ -54,7 +54,7 @@ def tests_plot_all_peak_mass_models():
         ],
     )
     assert result.exit_code == 0
-    assert calculate_hash(output_path) != calculate_hash(output_path_without_age_label)
+    assert calculate_hash(output_path) != calculate_hash(output_path_with_age_label)
 
 
 def get_eps_resolution(eps_path):
