@@ -67,10 +67,11 @@ def test_plot_plot_all_peak_mass_models():
     font_family = "DejaVu Sans"
     obtained_ax = _plot_all_peak_mass_models(df, font_family)
     plt.pyplot.savefig("test.png", transparent=True)
-    children_index_for_each_season = [0, 1, 2]
+    children_index_for_each_season = [0, 2, 4]
     for nth_children in children_index_for_each_season:
         child_nth = obtained_ax.get_children()[nth_children]
         assert_children_is_line_2d(child_nth)
+        assert_children_is_path_collection(child_nth + 1)
     assert obtained_ax.get_children()[0].get_data()[0][0] == 27
     assert obtained_ax.get_children()[1].get_data()[0][0] == 26
     assert obtained_ax.get_legend().get_texts()[0].get_text() == "Season 2013"
@@ -85,6 +86,10 @@ def test_plot_plot_all_peak_mass_models():
 
 def assert_children_is_line_2d(children):
     assert isinstance(children, plt.lines.Line2D)
+
+
+def assert_children_is_path_collection(children):
+    assert isinstance(children, plt.collections.PathCollection)
 
 
 def assert_the_labes_are_right(obtained_ax):
