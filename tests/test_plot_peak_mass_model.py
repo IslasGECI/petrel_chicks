@@ -70,10 +70,11 @@ def test_plot_plot_all_peak_mass_models():
     children_index_for_each_season = [0, 2, 4]
     for nth_children in children_index_for_each_season:
         child_nth = obtained_ax.get_children()[nth_children]
+        collection_nth = obtained_ax.get_children()[nth_children + 1]
         assert_children_is_line_2d(child_nth)
-        assert_children_is_path_collection(nth_children + 1)
+        assert_children_is_path_collection(collection_nth)
     assert obtained_ax.get_children()[0].get_data()[0][0] == 27
-    assert obtained_ax.get_children()[1].get_data()[0][0] == 26
+    assert obtained_ax.get_children()[2].get_data()[0][0] == 26
     assert obtained_ax.get_legend().get_texts()[0].get_text() == "Season 2013"
     assert obtained_ax.get_legend().get_texts()[1].get_text() == "Season 2015"
     assert obtained_ax.get_legend().get_texts()[0].get_fontsize() == 18
