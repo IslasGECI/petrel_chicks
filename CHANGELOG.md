@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.6.0] - 2025-09-19
+### Added
+- The method `plot_model_for_all_seasons()` from class `_Plotter_model_for_all_seasons` now plots the maximum peak mass as a point.
+
 ## [0.5.2] - 2025-07-24
 ### Fixed
 - Function `set_ticks_and_limits()` set the y limits only with first and last rounded values for arrays of any length.
