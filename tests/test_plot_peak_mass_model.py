@@ -78,6 +78,7 @@ def test_plot_plot_all_peak_mass_models():
     assert obtained_ax.get_children()[0].get_data()[0][0] == 27
     assert obtained_ax.get_children()[2].get_data()[0][0] == 26
     assert obtained_ax.get_legend().get_texts()[0].get_text() == "Season 2013"
+    assert obtained_ax.get_legend().get_texts()[1].get_text() == "Age 38 days, peak mass 86.8"
     assert obtained_ax.get_legend().get_texts()[2].get_text() == "Season 2015"
     assert obtained_ax.get_legend().get_texts()[0].get_fontsize() == 18
     assert obtained_ax.get_legend().get_texts()[0].get_fontname() == font_family
