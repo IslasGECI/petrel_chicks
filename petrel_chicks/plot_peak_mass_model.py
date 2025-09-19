@@ -27,6 +27,8 @@ class _Plotter_model_for_all_seasons:
             filtered_data = self.df[self.df.Year == season]
             age, predicted_mass = get_fitted_points(filtered_data)
             plt.plot(age, predicted_mass)
+            print(age[500], predicted_mass[500])
+            plt.scatter(age[500], predicted_mass[500])
 
     def write_season_legends(self) -> None:
         font = fm.FontProperties(family=self.font_family, size=18)
