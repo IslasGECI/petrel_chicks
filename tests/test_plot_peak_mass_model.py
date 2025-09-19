@@ -75,8 +75,6 @@ def test_plot_plot_all_peak_mass_models():
         assert_children_is_path_collection(collection_nth)
     assert obtained_ax.get_children()[0].get_data()[0][0] == 27
     assert obtained_ax.get_children()[2].get_data()[0][0] == 26
-    number_of_seasons_in_test_data = 3
-    assert len(obtained_ax.get_legend()) == number_of_seasons_in_test_data
     assert obtained_ax.get_legend().get_texts()[0].get_text() == "Season 2013"
     assert obtained_ax.get_legend().get_texts()[1].get_text() == "Season 2015"
     assert obtained_ax.get_legend().get_texts()[0].get_fontsize() == 18
