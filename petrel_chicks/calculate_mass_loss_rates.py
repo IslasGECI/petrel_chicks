@@ -13,7 +13,9 @@ def add_unique_id(df):
 def calculate_mass_diff_2(df):
     df_copy = df.copy()
     df_copy["Hora_dt"] = pd.to_datetime(df_copy["Hora"])
-    df_copy["Fecha_dt"] = pd.to_datetime(df_copy["Fecha"] + " " + df_copy["Hora"])
+    df_copy["Fecha_dt"] = pd.to_datetime(
+        df_copy["Fecha"] + " " + df_copy["Hora"], format("%Y-%m-%d %H:%M:%S")
+    )
     df_copy["diff_hours"] = df_copy["Fecha_dt"].diff(periods=1) / np.timedelta64(1, "h")
     df_copy["diff_weights"] = df_copy["Masa"].diff(periods=1)
     df_copy["mass_loss_rate"] = -df_copy["diff_weights"] / df_copy["diff_hours"]
