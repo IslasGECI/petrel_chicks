@@ -2,7 +2,7 @@ from PIL import Image
 from petrel_chicks import cli
 from typer.testing import CliRunner
 import matplotlib.pyplot as plt
-from geci_test_tools import assert_exist, if_exist_remove
+from geci_test_tools import assert_exist, if_exist_remove, calculate_hash
 
 runner = CliRunner()
 
@@ -14,7 +14,7 @@ def tests_plot_all_peak_mass_models():
     assert " Output file path " in result.stdout
 
     data_path = "tests/data/medidas_morfometricas_con_edades.csv"
-    output_path = "tests/data/all_models.png"
+    output_path = "tests/data/all_models_without_age_label.png"
     if_exist_remove(output_path)
     result = runner.invoke(
         cli,
@@ -39,6 +39,22 @@ def tests_plot_all_peak_mass_models():
     assert all(isinstance(x, (int, float)) for x in dpi)
 
     assert dpi[0] > 599 and dpi[1] > 599
+    output_path_without_age_label = "tests/data/all_models.png"
+    result = runner.invoke(
+        cli,
+        [
+            "plot-all-peak-mass-models",
+            "--data-path",
+            data_path,
+            "--font-name",
+            "DejaVu Sans",
+            "--output-path",
+            output_path,
+            "--age-at-peak-mass-label",
+        ],
+    )
+    assert result.exit_code == 0
+    assert calculate_hash(output_path) != calculate_hash(output_path_without_age_label)
 
 
 def get_eps_resolution(eps_path):
