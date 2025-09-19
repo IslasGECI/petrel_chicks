@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 ### Removed
+## [0.7.0] - 2025-09-19
+### Added
+- The command `plot-all-peak-mass-models` now receives a the flag `--age-at-peak-mass-label` in order to show the age at peak mass as legend in the plot.
+
 
 ## [0.6.0] - 2025-09-19
 ### Added
