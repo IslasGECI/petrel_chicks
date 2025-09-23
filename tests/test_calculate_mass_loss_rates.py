@@ -37,13 +37,14 @@ expected_mass_loss_data = pd.DataFrame(d_0)
 
 
 def tests_calculate_mass_diff():
-    d: dict = {
-        "ID_nido": [1.0, 2.0, 3.0, 4.0],
-        "Fecha": ["2012-08-25", "2012-08-26", "2012-08-26", "2012-08-26"],
-        "Masa": [4.0, 3.0, 3.5, 3],
-        "Hora": ["15:00:00", "16:00:00", "18:00:00", "19:00:00"],
-    }
-    data = pd.DataFrame(d)
+    data = pd.DataFrame(
+        {
+            "ID_nido": [1.0, 2.0, 3.0, 4.0],
+            "Fecha": ["2012-08-25", "2012-08-26", "2012-08-26", "2012-08-26"],
+            "Masa": [4.0, 3.0, 3.5, 3],
+            "Hora": ["15:00:00", "16:00:00", "18:00:00", "19:00:00"],
+        }
+    )
     obtained_df = calculate_mass_diff_2(data)
     obtained_columns = list(obtained_df.keys())
     expected_columns = [
