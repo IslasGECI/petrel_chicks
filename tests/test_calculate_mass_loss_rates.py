@@ -67,33 +67,40 @@ def test_filter_post_meal_data():
     data = pd.DataFrame(
         {
             "ID_nido": [1.0, 2.0, 3.0, 4.0],
-            "Fecha": ["2012-08-25", "2012-08-26", "2012-08-26", "2012-08-26"],
+            "Fecha": ["2012-08-25", "2012-08-25", "2012-08-25", "2012-08-25"],
             "Masa": [4.0, 3.0, 3.5, 3],
             "Hora": ["15:00:00", "16:00:00", "18:00:00", "19:00:00"],
         }
     )
-    obtained_dataframe = calculate_mass_diff(data)
+    obtained_dataframe = calculate_mass_diff_2(data)
     obtained_all_data, obtained_post_meal = filter_post_meal_data(obtained_dataframe)
+    expected_dates = ["2012-08-25", "2012-08-25"]
+    expected_hours = ["15:00:00", "16:00:00"]
+    expected_fecha_dt = [expected_dates[i] + " " + expected_hours[i] for i in range(2)]
     expected_all_data = pd.DataFrame(
         {
             "ID_nido": [1.0, 2.0],
-            "Fecha": ["2012-08-25", "2012-08-26"],
+            "Fecha": expected_dates,
             "Masa": [4.0, 3.0],
-            "Hora": ["15:00:00", "16:00:00"],
-            "Hora_dt": pd.to_datetime(["15:00:00", "16:00:00"]),
+            "Hora": expected_hours,
+            "Hora_dt": pd.to_datetime(expected_hours),
+            "Fecha_dt": pd.to_datetime(expected_fecha_dt),
             "diff_hours": [np.nan, 1],
             "diff_weights": [np.nan, -1],
             "mass_loss_rate": [np.nan, 1],
         }
     )
 
+    expected_post_meal_date = "2012-08-25"
+    expected_post_meal_hour = "19:00:00"
     expected_post_meal = pd.DataFrame(
         {
             "ID_nido": [4.0],
-            "Fecha": ["2012-08-26"],
+            "Fecha": [expected_post_meal_date],
             "Masa": [3.0],
-            "Hora": ["19:00:00"],
-            "Hora_dt": pd.to_datetime(["19:00:00"]),
+            "Hora": [expected_post_meal_hour],
+            "Hora_dt": pd.to_datetime(expected_post_meal_hour),
+            "Fecha_dt": pd.to_datetime(expected_post_meal_date + " " + expected_post_meal_hour),
             "diff_hours": [1.0],
             "diff_weights": [-0.5],
             "mass_loss_rate": [0.5],
