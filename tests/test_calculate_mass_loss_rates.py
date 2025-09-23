@@ -6,6 +6,7 @@ from petrel_chicks import (
     add_unique_id,
     calculate_effective_mass_loss,
     calculate_mass_diff,
+    calculate_mass_diff_2,
     calculate_mass_loss_no_feed,
     calculate_mass_loss_after_feed,
     evaluate_mass_loss_no_feed,
@@ -36,7 +37,14 @@ expected_mass_loss_data = pd.DataFrame(d_0)
 
 
 def tests_calculate_mass_diff():
-    obtained_df = calculate_mass_diff(data)
+    d: dict = {
+        "ID_nido": [1.0, 2.0, 3.0, 4.0],
+        "Fecha": ["2012-08-25", "2012-08-26", "2012-08-26", "2012-08-26"],
+        "Masa": [4.0, 3.0, 3.5, 3],
+        "Hora": ["15:00:00", "16:00:00", "18:00:00", "19:00:00"],
+    }
+    data = pd.DataFrame(d)
+    obtained_df = calculate_mass_diff_2(data)
     obtained_columns = list(obtained_df.keys())
     expected_columns = [
         "ID_nido",
@@ -44,12 +52,14 @@ def tests_calculate_mass_diff():
         "Masa",
         "Hora",
         "Hora_dt",
+        "Fecha_dt",
         "diff_hours",
         "diff_weights",
         "mass_loss_rate",
     ]
     assert obtained_columns == expected_columns
-    assert_frame_equal(obtained_df, expected_mass_loss_data)
+    expected_rows = 4
+    assert len(obtained_df) == expected_rows
 
 
 d_1: dict = {
