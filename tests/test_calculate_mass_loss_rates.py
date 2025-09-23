@@ -109,6 +109,10 @@ def test_filter_post_meal_data():
     )
     assert_frame_equal(obtained_all_data, expected_all_data)
     assert_frame_equal(obtained_post_meal, expected_post_meal)
+    obtained_dataframe = calculate_mass_diff(data)
+    obtained_all_data, obtained_post_meal = filter_post_meal_data(obtained_dataframe)
+    assert_frame_equal(obtained_all_data, expected_all_data.drop(columns=["Fecha_dt"]))
+    assert_frame_equal(obtained_post_meal, expected_post_meal.drop(columns=["Fecha_dt"]))
 
 
 def test_add_unique_id():
