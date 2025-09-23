@@ -63,36 +63,43 @@ def tests_calculate_mass_diff():
     assert len(obtained_df) == expected_rows
 
 
-d_1: dict = {
-    "ID_nido": [1.0, 2.0],
-    "Fecha": [4.0, 3.0],
-    "Masa": [4.0, 3.0],
-    "Hora": ["15:00", "16:00"],
-    "Hora_dt": pd.to_datetime(["15:00", "16:00"]),
-    "diff_hours": [np.nan, 1],
-    "diff_weights": [np.nan, -1],
-    "mass_loss_rate": [np.nan, 1],
-}
-
-expected_all_data = pd.DataFrame(d_1)
-
-d_2: dict = {
-    "ID_nido": [4.0],
-    "Fecha": [1.0],
-    "Masa": [3.0],
-    "Hora": ["19:00"],
-    "Hora_dt": pd.to_datetime(["19:00"]),
-    "diff_hours": [1.0],
-    "diff_weights": [-0.5],
-    "mass_loss_rate": [0.5],
-}
-
-expected_post_meal = pd.DataFrame(d_2, index=[3])
-
-
 def test_filter_post_meal_data():
+    data = pd.DataFrame(
+        {
+            "ID_nido": [1.0, 2.0, 3.0, 4.0],
+            "Fecha": ["2012-08-25", "2012-08-26", "2012-08-26", "2012-08-26"],
+            "Masa": [4.0, 3.0, 3.5, 3],
+            "Hora": ["15:00:00", "16:00:00", "18:00:00", "19:00:00"],
+        }
+    )
     obtained_dataframe = calculate_mass_diff(data)
     obtained_all_data, obtained_post_meal = filter_post_meal_data(obtained_dataframe)
+    expected_all_data = pd.DataFrame(
+        {
+            "ID_nido": [1.0, 2.0],
+            "Fecha": ["2012-08-25", "2012-08-26"],
+            "Masa": [4.0, 3.0],
+            "Hora": ["15:00:00", "16:00:00"],
+            "Hora_dt": pd.to_datetime(["15:00:00", "16:00:00"]),
+            "diff_hours": [np.nan, 1],
+            "diff_weights": [np.nan, -1],
+            "mass_loss_rate": [np.nan, 1],
+        }
+    )
+
+    expected_post_meal = pd.DataFrame(
+        {
+            "ID_nido": [4.0],
+            "Fecha": ["2012-08-26"],
+            "Masa": [3.0],
+            "Hora": ["19:00:00"],
+            "Hora_dt": pd.to_datetime(["19:00:00"]),
+            "diff_hours": [1.0],
+            "diff_weights": [-0.5],
+            "mass_loss_rate": [0.5],
+        },
+        index=[3],
+    )
     assert_frame_equal(obtained_all_data, expected_all_data)
     assert_frame_equal(obtained_post_meal, expected_post_meal)
 
