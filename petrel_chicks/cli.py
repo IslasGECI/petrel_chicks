@@ -8,7 +8,6 @@ from petrel_chicks.plot_peak_mass_model import (
 )
 import petrel_chicks as pc
 
-
 cli = typer.Typer()
 
 

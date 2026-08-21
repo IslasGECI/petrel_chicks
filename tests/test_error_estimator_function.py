@@ -15,7 +15,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-
 dictionary = {
     "Fecha": ["2012-09-06", "2012-09-08"],
     "Edad": [1, 2],

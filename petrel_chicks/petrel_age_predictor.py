@@ -5,6 +5,8 @@
 from geci_plots import geci_plot
 from geci_plots import fix_date
 from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
 from sklearn.model_selection import train_test_split
 
 import json
@@ -50,7 +52,7 @@ class Fitter:
             self.y_train,
             self.y_test,
         ) = Cleaner_Morphometric.train_test_split()
-        self.lineal_model = LinearRegression(normalize=True)
+        self.lineal_model = make_pipeline(StandardScaler(with_mean=False), LinearRegression())
         self.exit_files_folder = "data/processed"
 
     def fit_model(self):
@@ -85,9 +87,10 @@ class Fitter:
             "Predicciones": list(self.predictions.ravel()),
             "Error": list(self.absolute_error_in_days.ravel()),
         }
+        linearregression_step = self.lineal_model.named_steps["linearregression"]
         self.linear_model_parameters = {
-            "Alpha": self.lineal_model.intercept_.tolist(),
-            "Beta": list(self.lineal_model.coef_.ravel()),
+            "Alpha": linearregression_step.intercept_.tolist(),
+            "Beta": list(linearregression_step.coef_.ravel()),
         }
         return self.predictions_dict, self.linear_model_parameters
 

@@ -8,7 +8,6 @@ from petrel_chicks.plot_peak_mass_model import _plot_all_peak_mass_models
 import pandas as pd
 import matplotlib as plt
 
-
 df = pd.DataFrame(
     {
         "ID_unico": [
