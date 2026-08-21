@@ -14,6 +14,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 ### Removed
+
+## [0.7.3] - 2026-08-21
+
+### Fixed
+- Compatibility with `scikit-learn>1.2.*`version.
+
 ## [0.7.2] - 2025-09-19
 ### Added
 - Add tests for `calculate_mass_diff_2()`.
