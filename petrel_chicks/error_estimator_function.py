@@ -91,10 +91,10 @@ def set_axis_labels(ax, morphometric_variable):
     labelpad = 10
     if morphometric_variable == "Masa":
         ax.set_ylabel(
-            f'{morphometric_variable.replace("_"," ")} (g)', fontsize=fontsize, labelpad=labelpad
+            f'{morphometric_variable.replace("_", " ")} (g)', fontsize=fontsize, labelpad=labelpad
         )
     else:
         ax.set_ylabel(
-            f'{morphometric_variable.replace("_"," ")} (mm)', fontsize=fontsize, labelpad=labelpad
+            f'{morphometric_variable.replace("_", " ")} (mm)', fontsize=fontsize, labelpad=labelpad
         )
     ax.set_xlabel("Días desde la eclosión", fontsize=fontsize, labelpad=labelpad)
