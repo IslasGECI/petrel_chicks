@@ -1,6 +1,6 @@
 import pandas as pd
 
-from petrel_chicks import adapt_data, add_anio_column, filterPerSeason
+from petrel_chicks.filter_per_season import adapt_data, add_anio_column, filterPerSeason
 
 
 def test_filterPerSeason():

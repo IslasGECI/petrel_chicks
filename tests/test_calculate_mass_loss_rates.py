@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from pandas._testing import assert_frame_equal
 
-from petrel_chicks import (
+from petrel_chicks.calculate_mass_loss_rates import (
     add_unique_id,
     calculate_effective_mass_loss,
     calculate_mass_diff,

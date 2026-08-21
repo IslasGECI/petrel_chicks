@@ -1,4 +1,4 @@
-from petrel_chicks import (
+from petrel_chicks.error_estimator_function import (
     calculate_time_days,
     logistic_model,
     inverse_logistic_model,

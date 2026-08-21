@@ -1,4 +1,4 @@
-from petrel_chicks import (
+from petrel_chicks.petrel_age_predictor import (
     bfill_empty_age,
     Cleaner_Morphometric,
     correct_age,
