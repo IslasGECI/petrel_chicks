@@ -1,5 +1,5 @@
 from PIL import Image
-from petrel_chicks import cli
+from petrel_chicks import cli, __version__
 from typer.testing import CliRunner
 import matplotlib.pyplot as plt
 from geci_test_tools import assert_exist, if_exist_remove, calculate_hash
@@ -109,4 +109,4 @@ def tests_version():
 
     result = runner.invoke(cli, ["version"])
     assert result.exit_code == 0
-    assert "0.7.2" in result.stdout
+    assert __version__ in result.stdout
