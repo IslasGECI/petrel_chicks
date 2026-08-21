@@ -16,8 +16,6 @@ import numpy as np
 import json
 import shutil
 from pathlib import Path
-import os
-import io
 from datetime import timedelta, datetime
 
 from pandas._testing import assert_frame_equal
@@ -129,14 +127,15 @@ def test_Plotter(mocker):
 
 
 def test_Plotter_(mocker):
-    delete_reports_figures()
     Parameters = mocker.Mock(spec=Predictions_and_Parameters)
     Parameters.data_for_plot.return_value = [1, 2, 3], [1, 2, 3]
     Plotter_parameters = Plotter(Parameters)
     Plotter_parameters.plot()
-    makedirs = mocker.spy(os, "makedirs")
-    Plotter_parameters.savefig("reports/figures/figura.png")
-    makedirs.assert_called_once_with("reports/figures")
+    filename = "reports/figures/figura.png"
+    Plotter_parameters.savefig(filename)
+    figure_path = Path(filename)
+    assert figure_path.exists()
+    delete_reports_figures()
 
 
 def test_get_subset_morphometric_data(mocker):
