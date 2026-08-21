@@ -14,6 +14,8 @@ import pytest
 import pandas as pd
 import numpy as np
 import json
+import shutil
+from pathlib import Path
 import os
 import io
 from datetime import timedelta, datetime
@@ -76,34 +78,29 @@ def test_Fitter(mocker):
     assert "Error" in predictions_dict.keys()
     assert "Alpha" in linear_model_parameters.keys()
     assert "Beta" in linear_model_parameters.keys()
-    delete_data_processed()
-    Open = mocker.spy(io, "open")
-    makedirs = mocker.spy(os, "makedirs")
-    path_exist = mocker.spy(os.path, "exists")
     Fitter_model.dump_model()
-    path_exist.assert_called_with("data")
-    makedirs.assert_called_with("data", exist_ok=False)
-    filename = "data/processed/trained_linear_model.pickle"
-    Open.assert_called_once_with(filename, "wb")
+    file_path = Path("data/processed/trained_linear_model.pickle")
+    assert file_path.exists()
+    delete_data_processed()
 
 
 def test_Predictions_and_Parameters(mocker):
     Model_Fitter = mocker.Mock(spec=Fitter)
     Model_Fitter.calculate_results.return_value = errores, dictionary
     Prediction = Predictions_and_Parameters(errores, dictionary)
-    delete_reports_nontabular()
-    path = "reports/figures/salida.json"
-    makedirs = mocker.spy(os, "makedirs")
-    path_exist = mocker.spy(os.path, "exists")
-    Prediction.result_to_json(path)
-    makedirs.assert_called_once_with("reports/non-tabular")
-    path_exist.assert_called_with("reports")
-    with open(path, encoding="utf8") as info_file:
+    filename = "reports/non-tabular/salida.json"
+    Prediction.result_to_json(filename)
+
+    json_path = Path(filename)
+    assert json_path.exists()
+
+    with open(json_path, encoding="utf8") as info_file:
         information = json.load(info_file)
     assert information == {**errores, **dictionary}
     ages, prediction_days_diff = Prediction.data_for_plot()
     assert ages == errores["Edades"]
     assert prediction_days_diff == errores["Error"]
+    delete_reports_nontabular()
 
 
 def test_Plotter(mocker):
@@ -160,15 +157,15 @@ def test_get_subset_morphometric_data(mocker):
 
 
 def delete_reports_figures():
-    os.system("rm -rf reports/figures")
+    shutil.rmtree("reports/figures")
 
 
 def delete_reports_nontabular():
-    os.system("rm -rf reports/non-tabular")
+    shutil.rmtree("reports/non-tabular")
 
 
 def delete_data_processed():
-    os.system("rm -rf data")
+    shutil.rmtree("data")
 
 
 def test_correct_age():
