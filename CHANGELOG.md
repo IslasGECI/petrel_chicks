@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.7.4] - 2026-10-16
+
+### Fixed
+- Class `Fitter` does not use `StandarScaler` function. This returns to previous behaviour were `Fitter` do not scale values before fit model.
+
 ## [0.7.3] - 2026-08-21
 
 ### Fixed
