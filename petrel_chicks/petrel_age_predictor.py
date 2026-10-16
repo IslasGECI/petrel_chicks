@@ -5,7 +5,6 @@
 from geci_plots import geci_plot
 from geci_plots import fix_date
 from sklearn.linear_model import LinearRegression
-from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import make_pipeline
 from sklearn.model_selection import train_test_split
 
