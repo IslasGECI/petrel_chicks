@@ -52,7 +52,7 @@ class Fitter:
             self.y_train,
             self.y_test,
         ) = Cleaner_Morphometric.train_test_split()
-        self.lineal_model = make_pipeline(StandardScaler(with_mean=False), LinearRegression())
+        self.lineal_model = make_pipeline(LinearRegression())
         self.exit_files_folder = "data/processed"
 
     def fit_model(self):

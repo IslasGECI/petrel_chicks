@@ -62,13 +62,6 @@ def test_Fitter(mocker):
     Morphometric_Data = Cleaner_Morphometric(petrel_data, features_list, observables_list)
     Fitter_model = Fitter(Morphometric_Data)
 
-    does_model_normalize = "standardscaler" in Fitter_model.lineal_model.steps[0]
-    assert does_model_normalize
-
-    standard_scaler_options = str(Fitter_model.lineal_model.steps[0][1])
-    standardize_without_mean = "with_mean=False"
-    assert standardize_without_mean in standard_scaler_options
-
     Fitter_model.fit_model()
     Fitter_model.predict()
     are_equal = np.allclose(Fitter_model.predictions, np.array([0.5, 1.0, 1.5]))
