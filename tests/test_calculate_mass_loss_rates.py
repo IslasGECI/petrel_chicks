@@ -14,11 +14,12 @@ from petrel_chicks.calculate_mass_loss_rates import (
     filter_post_meal_data,
 )
 
+horas = ["15:00:00", "16:00:00", "18:00:00", "19:00:00"]
 d: dict = {
     "ID_nido": [1.0, 2.0, 3.0, 4.0],
     "Fecha": [4.0, 3.0, 2.0, 1.0],
     "Masa": [4.0, 3.0, 3.5, 3],
-    "Hora": ["15:00", "16:00", "18:00", "19:00"],
+    "Hora": horas,
 }
 data = pd.DataFrame(d)
 
@@ -26,8 +27,8 @@ d_0: dict = {
     "ID_nido": [1.0, 2.0, 3.0, 4.0],
     "Fecha": [4.0, 3.0, 2.0, 1.0],
     "Masa": [4.0, 3.0, 3.5, 3],
-    "Hora": ["15:00", "16:00", "18:00", "19:00"],
-    "Hora_dt": pd.to_datetime(["15:00", "16:00", "18:00", "19:00"]),
+    "Hora": horas,
+    "Hora_dt": pd.to_datetime(horas, format="%H:%M:%S"),
     "diff_hours": [np.nan, 1, 2, 1],
     "diff_weights": [np.nan, -1, 0.5, -0.5],
     "mass_loss_rate": [np.nan, 1, -0.25, 0.5],
@@ -42,7 +43,7 @@ def tests_calculate_mass_diff():
             "ID_nido": [1.0, 2.0, 3.0, 4.0],
             "Fecha": ["2012-08-25", "2012-08-26", "2012-08-26", "2012-08-26"],
             "Masa": [4.0, 3.0, 3.5, 3],
-            "Hora": ["15:00:00", "16:00:00", "18:00:00", "19:00:00"],
+            "Hora": horas,
         }
     )
     obtained_df = calculate_mass_diff_2(data)
@@ -69,7 +70,7 @@ def test_filter_post_meal_data():
             "ID_nido": [1.0, 2.0, 3.0, 4.0],
             "Fecha": ["2012-08-25", "2012-08-25", "2012-08-25", "2012-08-25"],
             "Masa": [4.0, 3.0, 3.5, 3],
-            "Hora": ["15:00:00", "16:00:00", "18:00:00", "19:00:00"],
+            "Hora": horas,
         }
     )
     obtained_dataframe = calculate_mass_diff_2(data)
@@ -120,7 +121,7 @@ def test_add_unique_id():
         "Id_nido": [1.0, 2.0, 3.0, 4.0],
         "Fecha": [4.0, 3.0, 2.0, 1.0],
         "Masa": [4.0, 3.0, 3.5, 3],
-        "Hora": ["15:00", "16:00", "18:00", "19:00"],
+        "Hora": horas,
         "Year": [2020, 2020, 2020, 2020],
     }
     data = pd.DataFrame(d)
