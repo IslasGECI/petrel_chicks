@@ -66,8 +66,8 @@ def test_Fitter(mocker):
     assert does_model_normalize
 
     standard_scaler_options = str(Fitter_model.lineal_model.steps[0][1])
-    does_standardize_without_mean = "with_mean=False"
-    assert does_standardize_without_mean in standard_scaler_options
+    standardize_without_mean = "with_mean=False"
+    assert standardize_without_mean in standard_scaler_options
 
     Fitter_model.fit_model()
     Fitter_model.predict()
